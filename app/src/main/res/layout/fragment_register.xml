@@ -37,6 +37,7 @@
             android:layout_margin="6dp"
             >
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_email"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/email"
@@ -80,7 +81,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/email"
-                android:id="@+id/card2"
+                android:id="@+id/card_phone_number"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="@id/phone"
                 android:visibility="gone"
@@ -131,11 +132,11 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             android:layout_marginBottom="15dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@id/registration_link"
+            app:layout_constraintEnd_toStartOf="@id/login_link"
             />
         <TextView
             android:layout_marginBottom="15dp"
-            android:id="@+id/registration_link"
+            android:id="@+id/login_link"
             android:text="@string/login_here"
             android:textSize="15sp"
             android:fontFamily="@font/poppins_medium"
@@ -154,8 +155,8 @@
         android:elevation="2dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/sign_in_button"
-        android:layout_alignStart="@id/sign_in"
-        android:layout_alignEnd="@id/sign_in"
+        android:layout_alignStart="@id/sign_up"
+        android:layout_alignEnd="@id/sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
@@ -185,7 +186,7 @@
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="10dp"
         android:layout_marginBottom="10dp"
-        android:id="@+id/sign_in"
+        android:id="@+id/sign_up"
         app:cardElevation="2dp"
         app:contentPadding="15dp"
         android:layout_above="@id/sign_in_button"
@@ -217,6 +218,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_number"
                 android:hint="  Telefon nömrəsi"
                 android:drawableStart="@drawable/ic_baseline_phone_android_24"
                 android:layout_width="match_parent"
@@ -234,6 +236,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_password"
                 android:hint="  Şifrə"
                 android:drawableStart="@drawable/ic_baseline_lock_24"
                 android:inputType="textPassword"
