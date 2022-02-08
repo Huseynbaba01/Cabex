@@ -14,11 +14,6 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		binding = ActivityMainBinding.inflate(getLayoutInflater());
-
-		binding.firstOtp.addTextChangedListener(new GenericTextWatcher(binding.secondOtp, binding.firstOtp));
-		binding.secondOtp.addTextChangedListener(new GenericTextWatcher(binding.thirdOtp, binding.firstOtp));
-		binding.thirdOtp.addTextChangedListener(new GenericTextWatcher(binding.fourthOtp, binding.secondOtp));
-		binding.fourthOtp.addTextChangedListener(new GenericTextWatcher(binding.fourthOtp, binding.thirdOtp));
 		setContentView(binding.getRoot());
 	}
 }

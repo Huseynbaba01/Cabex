@@ -22,10 +22,11 @@ public class OTPFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		binding = FragmentOTPBinding.inflate(inflater, container, false);
-		binding.firstOtp.addTextChangedListener(new GenericTextWatcher(binding.secondOtp, binding.firstOtp));
-		binding.secondOtp.addTextChangedListener(new GenericTextWatcher(binding.thirdOtp, binding.firstOtp));
-		binding.thirdOtp.addTextChangedListener(new GenericTextWatcher(binding.fourthOtp, binding.secondOtp));
-		binding.fourthOtp.addTextChangedListener(new GenericTextWatcher(binding.fourthOtp, binding.thirdOtp));
+
+		binding.firstOtp.addTextChangedListener(new GenericTextWatcher(binding.firstOtp, binding.secondOtp, binding.firstOtp));
+		binding.secondOtp.addTextChangedListener(new GenericTextWatcher(binding.secondOtp, binding.thirdOtp, binding.firstOtp));
+		binding.thirdOtp.addTextChangedListener(new GenericTextWatcher(binding.thirdOtp, binding.fourthOtp, binding.secondOtp));
+		binding.fourthOtp.addTextChangedListener(new GenericTextWatcher(binding.fourthOtp, binding.fourthOtp, binding.thirdOtp));
 
 		return binding.getRoot();
 	}
