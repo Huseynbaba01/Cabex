@@ -44,7 +44,7 @@
         <TextView
             android:layout_marginBottom="15dp"
             android:id="@+id/registration_link"
-            android:text="@string/login_here"
+            android:text="@string/register_here"
             android:textSize="15sp"
             android:fontFamily="@font/poppins_medium"
             android:textColor="#FF9800"
@@ -61,63 +61,56 @@
         android:layout_marginBottom="5dp"
         android:elevation="2dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/sign_in_button"
-        android:layout_alignStart="@id/sign_up"
-        android:layout_alignEnd="@id/sign_up"
+        android:id="@+id/google_button"
+        android:layout_alignStart="@id/sign_in"
+        android:layout_alignEnd="@id/sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
-        <androidx.cardview.widget.CardView
-            android:id="@+id/google_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_toStartOf="@+id/google_hint"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/google_icon"
-                />
-            <TextView
-                android:id="@+id/google_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_centerInParent="true"
-                android:text="Google'la davam edin"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_medium"
-                />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_toStartOf="@+id/google_hint"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/google_icon"
+                    />
+                <TextView
+                    android:id="@+id/google_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_centerInParent="true"
+                    android:text="Google'la davam edin"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_medium"
+                    />
+            </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
-
-</androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
-        app:cardCornerRadius="10dp"
+    <com.google.android.material.button.MaterialButton
+        app:cornerRadius="15dp"
+        android:clickable="true"
         android:layout_marginBottom="10dp"
-        android:id="@+id/sign_up"
-        app:cardElevation="2dp"
-        app:contentPadding="15dp"
-        android:layout_above="@id/sign_in_button"
+        android:id="@+id/sign_in"
+        android:padding="15dp"
+        android:layout_above="@id/google_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#F1D856"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        android:focusable="true"
             android:text="Daxil ol"
+            android:layout_gravity="center"
             android:fontFamily="@font/poppins_medium"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:gravity="center"
             />
-    </androidx.cardview.widget.CardView>
+
 
     <LinearLayout
         android:layout_width="match_parent"

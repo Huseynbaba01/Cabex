@@ -16,8 +16,7 @@
             app:popUpTo="@id/registerFragment" />
         <argument
             android:name="myArg"
-            app:argType="integer"
-            app:nullable="true"/>
+            app:argType="integer"/>
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
