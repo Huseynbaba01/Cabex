@@ -130,8 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
-
-                />
+                android:maxLines="1"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_marginTop="5dp"
@@ -139,11 +138,13 @@
             android:layout_marginBottom="25dp"
             app:passwordToggleEnabled="true"
             android:layout_height="wrap_content"
+            app:errorEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_password"
                 android:hint="  Şifrə"
+                android:maxLines="1"
                 android:inputType="textPassword"
                 android:fontFamily="@font/poppins_light"
                 android:layout_width="match_parent"

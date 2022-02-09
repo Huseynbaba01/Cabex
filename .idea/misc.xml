@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/activity_main.xml" value="0.1431159420289855" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_login.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_o_t_p.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_register.xml" value="0.264" />
       </map>
     </option>
   </component>

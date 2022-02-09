@@ -183,26 +183,26 @@
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="10dp"
-        android:layout_marginBottom="10dp"
         android:id="@+id/sign_up"
-        app:cardElevation="2dp"
-        app:contentPadding="10dp"
-        android:layout_above="@id/google_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/google_button"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="#F1D856"
-        >
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:contentPadding="10dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hesab yarat"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="20sp"
-            android:textColor="@color/black"
             android:gravity="center"
-            />
+            android:text="Hesab yarat"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
