@@ -40,6 +40,7 @@ public class RegisterFragment extends Fragment {
 			binding.userNameLayout.setHint("Email");
 			binding.cardEmail.setVisibility(View.VISIBLE);
 			binding.cardPhoneNumber.setVisibility(View.GONE);
+			binding.countryCodePicker.setVisibility(View.GONE);
 		}
 	}
 
@@ -50,6 +51,7 @@ public class RegisterFragment extends Fragment {
 			binding.userNameLayout.setHint("Phone number");
 			binding.cardPhoneNumber.setVisibility(View.VISIBLE);
 			binding.cardEmail.setVisibility(View.GONE);
+			binding.countryCodePicker.setVisibility(View.VISIBLE);
 		}
 	}
 
