@@ -3,7 +3,7 @@ package com.arif.cabex.MVVM;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
-import com.arif.cabex.DataHolder.LoginData;
+import com.arif.cabex.model.LoginData;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

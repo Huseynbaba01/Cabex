@@ -23,11 +23,17 @@ public class OTPFragment extends Fragment {
 	                         Bundle savedInstanceState) {
 		binding = FragmentOTPBinding.inflate(inflater, container, false);
 
+		addTextChangedListeners();
+
+		return binding.getRoot();
+	}
+
+	private void addTextChangedListeners(){
 		binding.firstOtp.addTextChangedListener(new GenericTextWatcher(binding.firstOtp, binding.secondOtp, binding.firstOtp));
 		binding.secondOtp.addTextChangedListener(new GenericTextWatcher(binding.secondOtp, binding.thirdOtp, binding.firstOtp));
 		binding.thirdOtp.addTextChangedListener(new GenericTextWatcher(binding.thirdOtp, binding.fourthOtp, binding.secondOtp));
-		binding.fourthOtp.addTextChangedListener(new GenericTextWatcher(binding.fourthOtp, binding.fourthOtp, binding.thirdOtp));
-
-		return binding.getRoot();
+		binding.fourthOtp.addTextChangedListener(new GenericTextWatcher(binding.fourthOtp, binding.fourthOtp, binding.fifthOtp));
+		binding.firstOtp.addTextChangedListener(new GenericTextWatcher(binding.fifthOtp, binding.thirdOtp, binding.sixthOtp));
+		binding.sixthOtp.addTextChangedListener(new GenericTextWatcher(binding.sixthOtp, binding.sixthOtp, binding.fifthOtp));
 	}
 }

@@ -1,4 +1,4 @@
-package com.arif.cabex.DataHolder;
+package com.arif.cabex.model;
 
 public class LoginData {
     private String userName;

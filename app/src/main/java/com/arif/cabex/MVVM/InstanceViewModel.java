@@ -3,9 +3,8 @@ package com.arif.cabex.MVVM;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.arif.cabex.DataHolder.LoginData;
+import com.arif.cabex.model.LoginData;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

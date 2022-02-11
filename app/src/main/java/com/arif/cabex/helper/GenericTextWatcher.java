@@ -31,7 +31,6 @@ public class GenericTextWatcher implements TextWatcher {
 
 	@Override
 	public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-		if(arg0 != null && arg0.length() > 0)
-			self.setText(arg0.charAt(arg0.length()-1));
+		//TODO In future, we can add new algorithm to replace the current digit while typing in a digit box
 	}
 }
