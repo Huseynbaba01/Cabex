@@ -2,24 +2,24 @@ package com.arif.cabex.helper;
 
 
 public class PhoneValidity {
-	private String Phone;
-	private String Code;
+	private String phone;
+	private String code;
 	private boolean isValid;
 
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
 
 	public String getCode() {
-		return Code;
+		return code;
 	}
 
 	public void setCode(String code) {
-		Code = code;
+		this.code = code;
 	}
 
 	public boolean isValid() {
