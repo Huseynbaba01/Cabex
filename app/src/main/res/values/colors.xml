@@ -10,4 +10,7 @@
     <color name="dark_yellow">#FFC107</color>
     <color name="dark_white">#CABFAB</color>
     <color name="dark_red">#780404</color>
+    <color name="filter_image">#F1D856</color>
+    <color name="filter_text">#CCD2E3</color>
+    <color name="main_page_items">#FAFAFA</color>
 </resources>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_MainPageListItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_MainPageListItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="@color/main_page_items"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp"
+        app:contentPadding="7dp">
+
+        <LinearLayout
+            android:id="@+id/ll_mainPageListItem2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_MPLI_line1"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:background="#FAFAFA"
+                android:clickable="true">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvImage_recyclerView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    app:cardCornerRadius="30dp">
+
+                    <ImageView
+                        android:id="@+id/profilePicture"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:srcCompat="@tools:sample/avatars" />
+                </androidx.cardview.widget.CardView>
+
+                <RelativeLayout
+                    android:id="@+id/rl_RecylerView_line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@+id/cvImage_recyclerView">
+
+                    <ImageView
+                        android:id="@+id/iv_arrowDown"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        app:srcCompat="@drawable/arrow_down" />
+
+                    <TextView
+                        android:id="@+id/tc_route"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="Bakı-Gəncə"
+                        android:textColor="#353535"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_MPLI_line2"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:background="#EEEEEE">
+
+                <TextView
+                    android:id="@+id/tv_fullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Kərim Əhmədli"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_MPGLI_line3"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:background="#FAFAFA">
+
+                <TextView
+                    android:id="@+id/tv_departure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="14:00-da Bakı adlı məntəqəni tərk edir."
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_MPLI_line4"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:background="#EEEEEE">
+
+                <TextView
+                    android:id="@+id/carBrand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="Hyundai Sonata"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_MPGLI_line5"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:background="#FAFAFA">
+
+                <TextView
+                    android:id="@+id/seats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="4 oturacaqdan 3 boş"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/dahaEtrafli"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daha_etrafli"
+                    android:layout_centerVertical="true"
+                    android:textSize="18sp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
