@@ -12,6 +12,7 @@ class DriverInfo {
     var departureTime:String? = null
     var departurePoint:String? = null
     var destinationPoint:String? = null
+    var isOpened = false
     constructor(profilePicture:Int, departurePoint:String, destinationPoint:String, driverFullName:String, departureTime:String,
                 carBrand:String, numberOfSeats:Int, emptySeats:Int) {
         this.carBrand = carBrand

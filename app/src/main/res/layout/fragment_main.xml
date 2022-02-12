@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
     android:orientation="vertical"
-    tools:context=".ui.fragment.MainFragment"
-    android:backgroundTint="@color/white">
+    tools:context=".ui.fragment.MainFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvFilter"
@@ -15,8 +15,7 @@
         android:layout_margin="15dp"
         android:backgroundTint="@color/main_page_items"
         app:cardCornerRadius="8dp"
-        app:contentPadding="7dp"
-        >
+        app:contentPadding="7dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -45,8 +44,8 @@
                 android:layout_marginLeft="17dp"
                 android:layout_toRightOf="@+id/cvImage"
                 android:text="TextView"
-                android:textSize="18sp"
-                android:textColor="@color/filter_text"/>
+                android:textColor="@color/filter_text"
+                android:textSize="18sp" />
         </RelativeLayout>
 
 
@@ -54,7 +53,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/main_page_list_item" />
 
 </LinearLayout>
 

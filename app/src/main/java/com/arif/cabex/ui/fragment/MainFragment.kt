@@ -6,15 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.RecyclerView
 import com.arif.cabex.DriverInfo
 import com.arif.cabex.R
 import com.arif.cabex.databinding.FragmentMainBinding
+import com.arif.cabex.databinding.MainPageListItemBinding
+import com.arif.cabex.ui.adapter.DriverInfoAdapter
+import com.arif.cabex.ui.holder.MyViewHolder
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
 
     var listOfDriversInfo = ArrayList<DriverInfo>()
-    var adapter:DriverInfoAdapter? = null
+    var adapter: DriverInfoAdapter? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,28 +43,7 @@ class MainFragment : Fragment() {
 
     }
 
-    class DriverInfoAdapter: BaseAdapter {
-        var listOfDriverInfo = ArrayList<DriverInfo>()
-        constructor(listOfDriverInfo: ArrayList<DriverInfo>):super(){
 
-        }
-        override fun getCount(): Int {
-            return listOfDriverInfo.size
-        }
-
-        override fun getItem(p0: Int): Any {
-            return listOfDriverInfo[p0]
-        }
-
-        override fun getItemId(p0: Int): Long {
-            return p0.toLong()
-        }
-
-        override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-            TODO("Not yet implemented")
-
-        }
-    }
 
     companion object {
 
