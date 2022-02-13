@@ -15,4 +15,7 @@
     <color name="lightGrey"> #D3D3D3</color>
     <color name="duskYellow">#ffc922 </color>
 
+    <color name="filter_image">#F1D856</color>
+    <color name="filter_text">#CCD2E3</color>
+    <color name="main_page_items">#FAFAFA</color>
 </resources>
