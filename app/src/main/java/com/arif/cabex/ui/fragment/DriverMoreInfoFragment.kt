@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.arif.cabex.databinding.FragmentDriverProfileBinding
 
 
-class DriverProfileFragment : Fragment() {
+class DriverMoreInfoFragment : Fragment() {
    private lateinit var binding: FragmentDriverProfileBinding
 
 
