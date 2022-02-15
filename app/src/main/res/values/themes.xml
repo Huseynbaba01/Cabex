@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.Cabex" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimary">#F1D856</item>
+        <item name="colorPrimaryDark">#F1D856</item>
+        <item name="colorAccent">#F1D856</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>
