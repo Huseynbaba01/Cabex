@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.DriverMoreInfoFragment"
+    android:background="@color/white"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Bakı-Gəncə"
+        android:textColor="@color/black_text_color"
+        android:textSize="18sp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/route"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="100dp"
+        android:id="@+id/cvProfilePicture">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            tools:src="@tools:sample/avatars" />
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/buttons"
+        android:layout_below="@+id/cvProfilePicture"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/driverNameInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Sürücü"
+                android:textColor="@color/information_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/driverName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/driverNameInfo"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Driver Name"
+                android:textColor="@color/black_text_color"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/contactNumberInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/driverName"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Əlaqə nömrəsi"
+                android:textColor="@color/information_text"
+                android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/whatsappNumber"
+                android:layout_below="@+id/contactNumberInfo">
+                <TextView
+                    android:id="@+id/contactNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Contact Number"
+                    android:textColor="@color/black_text_color"
+                    android:textSize="22sp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/whatsapp"
+                    android:src="@drawable/whatsapp"
+                    android:layout_marginLeft="5dp"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/departureTimeInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/whatsappNumber"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Məntəqəni tərk etmə vaxtı"
+                android:textColor="@color/information_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/departureTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/departureTimeInfo"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Departure Time"
+                android:textColor="@color/black_text_color"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/carBrandInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/departureTime"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Avtomonilin markası"
+                android:textColor="@color/information_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/carBrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/carBrandInfo"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Car Brand"
+                android:textColor="@color/black_text_color"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/carPlateInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/carBrand"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Avtomobilin nömrəsi"
+                android:textColor="@color/information_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/carPlate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/carPlateInfo"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Car Plate"
+                android:textColor="@color/black_text_color"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/carColorInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/carPlate"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Avtomobilin rəngi"
+                android:textColor="@color/information_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/carColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/carColorInfo"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Car Color"
+                android:textColor="@color/black_text_color"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/emptySeatsInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/carColor"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Boş oturacaqların sayı"
+                android:textColor="@color/information_text"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/emptySeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emptySeatsInfo"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Oturacaqlar: x/y"
+                android:textColor="@color/black_text_color"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/ratingInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emptySeats"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="10dp"
+                android:text="Reytinq"
+                android:textColor="@color/information_text"
+                android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Base.Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ratingInfo"
+                android:numStars="5"
+                android:rating="3.4"
+                android:stepSize="0.1"
+                android:theme="@style/RatingBar"
+
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/buttons"
+        android:orientation="horizontal">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#F1D856"
+            android:fontFamily="@font/poppins_medium"
+            android:inputType="text"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="Sifariş et"
+            android:textSize="18sp"
+            app:cornerRadius="8dp"
+            android:textColor="@color/black_text_color" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/call"
+            app:icon="@drawable/phone"
+            app:iconGravity="textStart"
+            app:iconTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#86D978"
+            android:fontFamily="@font/poppins_medium"
+            android:inputType="textCapSentences"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="Zəng et"
+            android:textSize="18sp"
+            app:cornerRadius="8dp"
+            android:textColor="@color/black_text_color" />
+    </LinearLayout>
+
+</RelativeLayout>

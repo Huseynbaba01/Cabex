@@ -10,6 +10,11 @@
     <color name="dark_yellow">#FFC107</color>
     <color name="dark_white">#CABFAB</color>
     <color name="dark_red">#780404</color>
+    <color name="black_text_color">#353535</color>
+    <color name="information_text">#8D8D8D</color>
+    <color name="lightGrey"> #D3D3D3</color>
+    <color name="duskYellow">#ffc922 </color>
+
     <color name="filter_image">#F1D856</color>
     <color name="filter_text">#CCD2E3</color>
     <color name="main_page_items">#FAFAFA</color>
