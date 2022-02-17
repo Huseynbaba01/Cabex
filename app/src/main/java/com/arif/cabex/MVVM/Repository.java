@@ -3,7 +3,7 @@ package com.arif.cabex.MVVM;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
-import com.arif.cabex.model.LoginData;
+import com.arif.cabex.model.RegisterData;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Repository {
     static Repository repository;
-    private ArrayList<LoginData> dataList=new ArrayList<>();
+    private ArrayList<RegisterData> dataList=new ArrayList<>();
     DatabaseReference dataBase;
 
 
@@ -24,9 +24,9 @@ public class Repository {
         return repository;
     }
 
-    MutableLiveData<ArrayList<LoginData>> getLiveData(){
+    MutableLiveData<ArrayList<RegisterData>> getLiveData(){
         addDataToTheList();
-        MutableLiveData<ArrayList<LoginData>> liveData=new MutableLiveData<>();
+        MutableLiveData<ArrayList<RegisterData>> liveData=new MutableLiveData<>();
         liveData.setValue(dataList);
         return liveData;
     }
@@ -37,8 +37,8 @@ public class Repository {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot snapshotChild:snapshot.getChildren()){
-                    dataList.add(new LoginData(snapshot.getValue(LoginData.class).getUserName()
-                            ,snapshot.getValue(LoginData.class).getPassword()));
+                    dataList.add(new RegisterData(snapshot.getValue(RegisterData.class).getUserName()
+                            ,snapshot.getValue(RegisterData.class).getPassword()));
                 }
             }
 

@@ -1,12 +1,12 @@
 package com.arif.cabex.model;
 
-public class LoginData {
+public class RegisterData {
     private String userName;
     private String password;
 
-    public LoginData() {
+    public RegisterData() {
     }
-    public LoginData(String userName, String password) {
+    public RegisterData(String userName, String password) {
         this.userName = userName;
         this.password = password;
     }

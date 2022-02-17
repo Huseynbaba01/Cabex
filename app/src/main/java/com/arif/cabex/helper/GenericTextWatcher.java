@@ -5,13 +5,11 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 public class GenericTextWatcher implements TextWatcher {
-	private EditText self;
-	private EditText etPrev;
-	private EditText etNext;
+	private final EditText self;
+	private final EditText etNext;
 
-	public GenericTextWatcher(EditText self, EditText etNext, EditText etPrev) {
+	public GenericTextWatcher(EditText self, EditText etNext) {
 		this.self = self;
-		this.etPrev = etPrev;
 		this.etNext = etNext;
 	}
 
@@ -21,8 +19,6 @@ public class GenericTextWatcher implements TextWatcher {
 		if (text.length() == 1) {
 			etNext.requestFocus();
 		}
-		else if (text.length() == 0)
-			etPrev.requestFocus();
 	}
 
 	@Override

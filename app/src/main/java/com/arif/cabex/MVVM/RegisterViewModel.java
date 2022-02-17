@@ -1,29 +1,18 @@
 package com.arif.cabex.MVVM;
 
+import static android.content.ContentValues.TAG;
+
+import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.MutableLiveData;
 
 import com.arif.cabex.helper.CommonOperationHelper;
-import com.arif.cabex.model.LoginData;
-import com.arif.cabex.model.User;
-import com.google.firebase.FirebaseException;
+import com.arif.cabex.network.firebase.MyFirebase;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
-import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.concurrent.TimeUnit;
 
 public class RegisterViewModel extends ViewModel {
     public Repository repo;
@@ -31,80 +20,49 @@ public class RegisterViewModel extends ViewModel {
     private FirebaseAuth auth = FirebaseAuth.getInstance();
     private boolean isEmailSelected=false,isVerified=false;
     String userName,password,countryCode;
+    MyFirebase myFirebase=new MyFirebase();
+    Context mContext;
 
 
-    public boolean onVerification(String userName, String password, String countryCode, boolean isEmailSelected,FragmentActivity activity){
+    public void onVerification(String userName, String password, String countryCode, boolean isEmailSelected, FragmentActivity activity, Context context){
         this.userName=userName;
         this.password=password;
         this.countryCode=countryCode;
         this.isEmailSelected=isEmailSelected;
         this.activity=activity;
+        mContext=context;
+
+        myFirebase.initializeApp(mContext);
+
         if(isEmailSelected)
             registerWithEmail();
         else
             registerWithPhoneNumber();
-
-        return isVerified;
     }
 
 
     private void registerWithEmail() {
         if(!CommonOperationHelper.isValidEmail(userName)){
-            //TODO
+            Toast.makeText(activity, "Your email address is not valid!", Toast.LENGTH_SHORT).show();
         }
         else{
-            auth.createUserWithEmailAndPassword(
-                    userName,
-                    password)
-                    .addOnCompleteListener(task -> {
-                        FirebaseDatabase.getInstance()
-                                .getReference("User")
-                                .child(auth.getCurrentUser().getUid())
-                                .setValue(new User(userName,
-                                        password))
-                                .addOnCompleteListener(task1 -> isVerified=true);
-                        auth.getCurrentUser().sendEmailVerification();
-                    });
+            myFirebase.sendVerificationToEmail(userName,password);
         }
 
 
     }
 
     private void registerWithPhoneNumber() {
-        if(CommonOperationHelper.isValidPhoneNumber(userName, countryCode).isValid())
+        if(!CommonOperationHelper.isValidPhoneNumber(userName, countryCode).isValid())
         {
-            sendVerificationCodeToUser();
+            Log.d(TAG, "registerWithPhoneNumber: Your phone number is not valid");
+            Toast.makeText(activity, "Your phone number is not valid!", Toast.LENGTH_SHORT).show();
         }
         else{
-            //TODO Do some operation to show that user has entered an incorrect phone number
+            Log.d(TAG, "registerWithPhoneNumber: Your phone number is valid!");
+            String phoneNumber="+"+ countryCode+userName;
+            myFirebase.sendVerificationToPhoneNumber(phoneNumber,activity);
         }
-    }
-
-    private void sendVerificationCodeToUser() {
-        String phoneNumber = "+"+
-                countryCode+userName;
-        PhoneAuthProvider.verifyPhoneNumber(PhoneAuthOptions.newBuilder(auth)
-                .setPhoneNumber(phoneNumber)       // Phone number to verify
-                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                .setActivity(activity)
-                .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                    @Override
-                    public void onVerificationCompleted(@NonNull @NotNull PhoneAuthCredential phoneAuthCredential) {
-                        FirebaseDatabase.getInstance()
-                                .getReference("Users")
-                                .child(auth.getCurrentUser().getUid())
-                                .setValue(new User(userName, password))
-                                .addOnCompleteListener(task1 -> isVerified=true);
-                    }
-
-                    @Override
-                    public void onVerificationFailed(@NonNull @NotNull FirebaseException e) {
-                        //TODO Remove the below line or replace with a log (has been set for debugging)
-                        isVerified=false;
-                        Toast.makeText(activity.getApplicationContext(), e.getMessage()+"\n"+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .build());
     }
 
 

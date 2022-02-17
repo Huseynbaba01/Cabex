@@ -41,19 +41,19 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toStartOf="@id/registration_link"
             />
+
         <TextView
-            android:layout_marginBottom="15dp"
             android:id="@+id/registration_link"
-            android:text="@string/register_here"
-            android:textSize="15sp"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="#FF9800"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/account_hint"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/register_here"
+            android:textColor="#FF9800"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/account_hint" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView

@@ -39,7 +39,7 @@ public class LoginFragment extends Fragment {
 
 	private void onSignInButtonClicked(View view) {
 		if(binding.inputNumber.getText().toString().isEmpty()){
-//			binding.inputNumber.setError("Number section can't be empty!");
+			binding.inputNumber.setError("Number section can't be empty!");
 			return;
 		}
 		if(binding.inputPassword.getText().toString().equals("")) {
