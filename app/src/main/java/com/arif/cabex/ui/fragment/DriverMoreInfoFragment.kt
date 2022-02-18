@@ -19,12 +19,7 @@ class DriverMoreInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDriverProfileBinding.inflate(inflater,container,false)
-        // Inflate the layout for this fragment
-        fun callingSomeone() {
-            val dialIntent = Intent(Intent.ACTION_DIAL)
-            dialIntent.data = Uri.parse("+994503432260")//TODO replace with the driver's phone number
-            startActivity(dialIntent)
-        }
+
         binding.call.setOnClickListener{
             callingSomeone()
         }
@@ -40,6 +35,10 @@ class DriverMoreInfoFragment : Fragment() {
         whatsappIntent.data = Uri.parse(url)
         startActivity(whatsappIntent)
     }
-
+    private fun callingSomeone() {
+        val dialIntent = Intent(Intent.ACTION_DIAL)
+        dialIntent.data = Uri.parse("+994503432260")//TODO replace with the driver's phone number
+        startActivity(dialIntent)
+    }
 
 }

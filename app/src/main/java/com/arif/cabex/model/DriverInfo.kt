@@ -1,4 +1,4 @@
-package com.arif.cabex
+package com.arif.cabex.model
 
 class DriverInfo {
     var profilePicture:Int? = null

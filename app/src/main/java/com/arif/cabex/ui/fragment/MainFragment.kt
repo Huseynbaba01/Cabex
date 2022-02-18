@@ -5,16 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.TextView
-import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.RecyclerView
-import com.arif.cabex.DriverInfo
+import com.arif.cabex.model.DriverInfo
 import com.arif.cabex.R
 import com.arif.cabex.databinding.FragmentMainBinding
-import com.arif.cabex.databinding.MainPageListItemBinding
 import com.arif.cabex.ui.adapter.DriverInfoAdapter
-import com.arif.cabex.ui.holder.MyViewHolder
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding

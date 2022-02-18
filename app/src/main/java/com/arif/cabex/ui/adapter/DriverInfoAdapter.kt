@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.arif.cabex.DriverInfo
+import com.arif.cabex.model.DriverInfo
 import com.arif.cabex.databinding.MainPageListItemBinding
 import com.arif.cabex.ui.holder.MyViewHolder
 

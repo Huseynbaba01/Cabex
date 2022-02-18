@@ -43,7 +43,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="17dp"
                 android:layout_toRightOf="@+id/cvImage"
-                android:text="TextView"
+                android:text="Bakı - Gəncə"
                 android:textColor="@color/filter_text"
                 android:textSize="18sp" />
         </RelativeLayout>

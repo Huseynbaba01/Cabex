@@ -18,9 +18,6 @@
         <argument
             android:name="myArg"
             app:argType="integer"/>
-        <action
-            android:id="@+id/action_loginFragment_to_mainPagesActivity"
-            app:destination="@id/mainPagesActivity" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -44,13 +41,5 @@
         android:id="@+id/OTPFragment"
         android:name="com.arif.cabex.ui.fragment.OTPFragment"
         android:label="fragment_o_t_p"
-        tools:layout="@layout/fragment_o_t_p" >
-        <action
-            android:id="@+id/action_OTPFragment_to_mainPagesActivity"
-            app:destination="@id/mainPagesActivity" />
-    </fragment>
-    <activity
-        android:id="@+id/mainPagesActivity"
-        android:name="com.arif.cabex.ui.activity.MainPagesActivity"
-        android:label="MainPagesActivity" />
+        tools:layout="@layout/fragment_o_t_p" />
 </navigation>
