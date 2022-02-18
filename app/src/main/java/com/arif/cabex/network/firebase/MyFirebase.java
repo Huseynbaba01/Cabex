@@ -1,23 +1,16 @@
 package com.arif.cabex.network.firebase;
 
-import static android.content.ContentValues.TAG;
-
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.arif.cabex.event.OTPSentEvent;
 import com.arif.cabex.event.OTPVerifiedEvent;
-import com.arif.cabex.event.getMainUserText;
-import com.arif.cabex.event.getPassword;
+import com.arif.cabex.event.RegisterUserEvent;
 import com.arif.cabex.model.RegisterData;
 import com.arif.cabex.model.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.appcheck.FirebaseAppCheck;
@@ -37,6 +30,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.concurrent.TimeUnit;
 
 public class MyFirebase {
+    private final String TAG = "MyFirebase";
     FirebaseAuth auth=FirebaseAuth.getInstance();
     FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
 
@@ -48,11 +42,25 @@ public class MyFirebase {
         FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
         firebaseAppCheck.installAppCheckProviderFactory(
                 SafetyNetAppCheckProviderFactory.getInstance());
+        auth.getFirebaseAuthSettings().setAppVerificationDisabledForTesting(true);
+
     }
 
 
     public void sendVerificationToEmail(String emailAddress, String password){
-        auth.createUserWithEmailAndPassword(
+        auth.signInWithEmailAndPassword(emailAddress, password)
+                .addOnCompleteListener(task -> {
+            /*FirebaseDatabase.getInstance()
+                    .getReference("User")
+                    .child(auth.getCurrentUser().getUid())
+                    .setValue(new User(emailAddress,
+                            password))
+                    .addOnCompleteListener(task1 -> {
+                        //TODO write some code when email and password are created in the server
+                    });*/
+            auth.getCurrentUser().sendEmailVerification();
+        });
+       /* auth.createUserWithEmailAndPassword(
                 emailAddress,
                 password)
                 .addOnCompleteListener(task -> {
@@ -65,8 +73,10 @@ public class MyFirebase {
                                 //TODO write some code when email and password are created in the server
                             });
                     auth.getCurrentUser().sendEmailVerification();
-                });
-        user.sendEmailVerification(ActionCodeSettings.newBuilder().build());
+                });*/
+       /* user.sendEmailVerification(ActionCodeSettings
+                .newBuilder()
+                .build());*/
     }
 
 
@@ -85,7 +95,7 @@ public class MyFirebase {
 
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
-                        Log.d(TAG, "onVerificationFailed: "+e);
+                        Log.d(TAG, "onVerificationFailed: \n"+e.getLocalizedMessage()+"\n"+e.getMessage());
                     }
 
                     @Override
@@ -101,26 +111,15 @@ public class MyFirebase {
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
-    @Subscribe(sticky = true,threadMode = ThreadMode.ASYNC)
-    public void getUser(getMainUserText userText){
-        userName=userText.getMainText();
+    @Subscribe(sticky = true, threadMode = ThreadMode.ASYNC)
+    public void onRegisterUserEvent(RegisterUserEvent event){
+        userName = event.getUserName();
+        password = event.getPassword();
     }
-
-    @Subscribe(sticky = true,threadMode = ThreadMode.ASYNC)
-    public void getUser(getPassword password1){
-        password=password1.getPassword();
-    }
-
-
 
     public void registerUserToTheServer(){
         FirebaseDatabase.getInstance().getReference("Users")
                 .setValue(new RegisterData(userName,password))
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Log.d(TAG, "onComplete: registration completed!");
-                    }
-                });
+                .addOnCompleteListener(task -> Log.d(TAG, "onComplete: registration completed!"));
     }
 }

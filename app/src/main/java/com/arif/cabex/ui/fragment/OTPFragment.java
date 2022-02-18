@@ -1,13 +1,7 @@
 package com.arif.cabex.ui.fragment;
 
-import static android.os.Build.VERSION_CODES.R;
-
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,17 +12,13 @@ import com.arif.cabex.databinding.FragmentOTPBinding;
 import com.arif.cabex.event.OTPSentEvent;
 import com.arif.cabex.helper.GenericTextWatcher;
 import com.arif.cabex.network.firebase.MyFirebase;
-import com.google.android.gms.auth.api.phone.SmsRetriever;
 import com.google.android.material.textfield.TextInputEditText;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 public class OTPFragment extends BaseFragment implements View.OnKeyListener{
 	private FragmentOTPBinding binding;
-	MyFirebase myFirebase=new MyFirebase();
-	private String realOTPCode = "";
 	String verificationCode;
 	MyFirebase firebase=new MyFirebase();
 
@@ -51,7 +41,7 @@ public class OTPFragment extends BaseFragment implements View.OnKeyListener{
 		binding.fourthOtp.addTextChangedListener(new GenericTextWatcher(binding.fourthOtp, binding.fifthOtp));
 		binding.fifthOtp.addTextChangedListener(new GenericTextWatcher(binding.fifthOtp, binding.sixthOtp));
 		binding.sixthOtp.addTextChangedListener(new GenericTextWatcher(binding.sixthOtp, binding.sixthOtp));
-		setOnDeleteProcess();
+//		setOnDeleteProcess();
 
 	}
 
@@ -106,6 +96,6 @@ public class OTPFragment extends BaseFragment implements View.OnKeyListener{
 	@Subscribe(sticky = true,threadMode = ThreadMode.ASYNC)
 	public void getVerificationCode(OTPSentEvent otpSentEvent){
 		verificationCode=otpSentEvent.getOtp();
-		Toast.makeText(requireActivity(), verificationCode, Toast.LENGTH_SHORT).show();
+		Toast.makeText(requireActivity().getApplicationContext(), verificationCode, Toast.LENGTH_SHORT).show();
 	}
 }

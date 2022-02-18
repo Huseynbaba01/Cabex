@@ -1,41 +1,27 @@
 package com.arif.cabex.ui.fragment;
 
-import static com.arif.cabex.R.drawable.ic_baseline_phone_android_24;
-import static com.arif.cabex.R.drawable.ic_email;
-
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDirections;
-import androidx.navigation.fragment.NavHostFragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.navigation.NavDirections;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.arif.cabex.MVVM.RegisterViewModel;
 import com.arif.cabex.R;
 import com.arif.cabex.databinding.FragmentRegisterBinding;
-import com.arif.cabex.event.OTPSentEvent;
 import com.arif.cabex.event.OTPVerifiedEvent;
-import com.arif.cabex.event.getMainUserText;
-import com.arif.cabex.event.getPassword;
-import com.arif.cabex.network.firebase.MyFirebase;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.CommonStatusCodes;
-import com.google.android.gms.safetynet.SafetyNet;
-import com.google.android.gms.safetynet.SafetyNetApi;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.arif.cabex.event.RegisterUserEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.util.concurrent.Executor;
+import static com.arif.cabex.R.drawable.ic_baseline_phone_android_24;
+import static com.arif.cabex.R.drawable.ic_email;
 
 public class RegisterFragment extends BaseFragment {
 	private String TAG  = "RegisterFragment";
@@ -102,7 +88,9 @@ public class RegisterFragment extends BaseFragment {
 		}
 		if(password.isEmpty()){
 			binding.editPassword.setError("Password can't be empty!");
+			return;
 		}
+
 
 		sendTextsToEventBus();
 
@@ -113,9 +101,7 @@ public class RegisterFragment extends BaseFragment {
 				,binding.countryCodePicker.getSelectedCountryCode()
 				,isEmailSelected
 				,requireActivity(),
-				requireContext());
-
-
+				requireActivity().getApplicationContext());
 	}
 
 //	private void verifyWithReCaptcha() {
@@ -153,8 +139,9 @@ public class RegisterFragment extends BaseFragment {
 //	}
 
 	private void sendTextsToEventBus() {
-		EventBus.getDefault().postSticky(new getMainUserText(binding.editUserName.getText().toString()));
-		EventBus.getDefault().postSticky(new getPassword(binding.editPassword.getText().toString()));
+		Log.d(TAG, "sendTextsToEventBus: Came Here");
+		EventBus.getDefault().postSticky(new RegisterUserEvent(binding.editUserName.getText().toString(), binding.editPassword.getText().toString()));
+
 	}
 
 

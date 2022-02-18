@@ -8,41 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:708531151194:android:2cc6399006c715812c5363",
-        "android_client_info": {
-          "package_name": "com.android.application"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "708531151194-93cld8l2hcsj70a9d2j0vgo8gbmm1k6a.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCZPj2J-fFCfSxi_ENDuOKoabtZp1Pef38"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "708531151194-93cld8l2hcsj70a9d2j0vgo8gbmm1k6a.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:708531151194:android:699341ad529125b02c5363",
         "android_client_info": {
           "package_name": "com.arif.cabex"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "708531151194-spns0ac3sg1t9g87hv3n3phg6tveb20i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arif.cabex",
+            "certificate_hash": "481e89b81aa9f19aaf897ef25631f226ba0d15d0"
+          }
+        },
         {
           "client_id": "708531151194-93cld8l2hcsj70a9d2j0vgo8gbmm1k6a.apps.googleusercontent.com",
           "client_type": 3
