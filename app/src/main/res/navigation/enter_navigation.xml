@@ -6,6 +6,10 @@
     app:startDestination="@id/loginFragment">
 
     <fragment
+
+
+
+
         android:id="@+id/loginFragment"
         android:name="com.arif.cabex.ui.fragment.LoginFragment"
         android:label="fragment_login"
