@@ -203,59 +203,57 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_centerVertical="true"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <com.hbb20.CountryCodePicker
-                android:visibility="gone"
                 android:id="@+id/country_code_picker"
-                app:ccp_defaultPhoneCode="994"
-                app:ccp_showNameCode="false"
-                app:ccp_showFlag="false"
-                android:layout_marginTop="-8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"/>
+                android:layout_marginTop="-8dp"
+                android:visibility="gone"
+                app:ccp_defaultPhoneCode="994"
+                app:ccp_showFlag="false"
+                app:ccp_showNameCode="false" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/userName_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                >
+                android:hint="Email">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_userName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_light"
-
-                    />
+                    android:fontFamily="@font/poppins_light" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_layout"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="25dp"
-            app:passwordToggleEnabled="true"
-            android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="25dp"
+            app:passwordToggleEnabled="true">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_password"
-                android:hint="Şifrə"
-                android:inputType="textPassword"
-                android:fontFamily="@font/poppins_light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:fontFamily="@font/poppins_light"
+                android:hint="Şifrə"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 

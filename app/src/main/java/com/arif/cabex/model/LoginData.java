@@ -5,6 +5,7 @@ public class LoginData {
     private String password;
 
     public LoginData() {
+
     }
     public LoginData(String userName, String password) {
         this.userName = userName;
