@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.arif.cabex.databinding.FragmentRegisterBinding;
 import com.arif.cabex.helper.CommonOperationHelper;
 import com.arif.cabex.model.LoginData;
 import com.arif.cabex.model.User;
@@ -21,25 +22,33 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+
+
 public class RegisterViewModel extends ViewModel {
     public Repository repo;
+    FragmentRegisterBinding binding;
     FragmentActivity activity;
     private FirebaseAuth auth = FirebaseAuth.getInstance();
     private boolean isEmailSelected=false,isVerified=false;
     String userName,password,countryCode;
 
 
-    public boolean onVerification(String userName, String password, String countryCode, boolean isEmailSelected,FragmentActivity activity){
+    public boolean onVerification(FragmentRegisterBinding binding,String userName, String password, String countryCode, boolean isEmailSelected, FragmentActivity activity){
         this.userName=userName;
         this.password=password;
         this.countryCode=countryCode;
         this.isEmailSelected=isEmailSelected;
         this.activity=activity;
-        if(isEmailSelected)
+        this.binding=binding;
+        if(!isValidPassword(password)){
+            return false;
+        }
+        if(!isEmailSelected)
             registerWithEmail();
         else
             registerWithPhoneNumber();
@@ -47,6 +56,24 @@ public class RegisterViewModel extends ViewModel {
         return isVerified;
     }
 
+    private boolean isValidPassword(String password){
+        this.password = password;
+        if(password.length()<6) {
+            binding.editPassword.setError("Password must contain at least 6 characters");
+            return false;
+        }else if(!password.matches(".*[A-z].*")){
+            binding.editPassword.setError("Password must contain letter");
+            return false;
+        }else if(!password.matches(".*[0-9].*")){
+            binding.editPassword.setError("Password must contain number");
+            return false;
+        }else if(!password.matches(".*[!@#$&,./:;=?^_`|].*")){
+            binding.editPassword.setError("Password must contain special character");
+            return false;
+        }else {
+            return true;
+        }
+    }
 
     private void registerWithEmail() {
         if(!CommonOperationHelper.isValidEmail(userName)){
@@ -71,6 +98,7 @@ public class RegisterViewModel extends ViewModel {
     }
 
     private void registerWithPhoneNumber() {
+
         if(CommonOperationHelper.isValidPhoneNumber(userName, countryCode).isValid())
         {
             sendVerificationCodeToUser();
