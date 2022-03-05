@@ -10,7 +10,7 @@
         <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_login.xml" value="0.24818840579710144" />
         <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_notifications.xml" value="0.24818840579710144" />
         <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_o_t_p.xml" value="0.24818840579710144" />
-        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_register.xml" value="0.24818840579710144" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_register.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_settings.xml" value="0.24818840579710144" />
         <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/main_page_list_item.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.2703125" />
@@ -24,7 +24,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -79,7 +79,8 @@ public class RegisterFragment extends Fragment {
 		if(password.isEmpty()){
 			binding.editPassword.setError("Password can't be empty!");
 		}
-		boolean isRegistered=viewModel.onVerification(userName
+		boolean isRegistered=viewModel.onVerification(binding
+				,userName
 				,password
 				,binding.countryCodePicker.getSelectedCountryCode()
 				,isEmailSelected
