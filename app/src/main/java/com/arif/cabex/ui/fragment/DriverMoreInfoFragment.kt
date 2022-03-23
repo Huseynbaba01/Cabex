@@ -7,30 +7,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.arif.cabex.databinding.FragmentDriverProfileBinding
+import com.arif.cabex.databinding.FragmentDriverInfoBinding
 
 
 class DriverMoreInfoFragment : Fragment() {
-   private lateinit var binding: FragmentDriverProfileBinding
+   private lateinit var binding: FragmentDriverInfoBinding
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDriverProfileBinding.inflate(inflater,container,false)
+        binding = FragmentDriverInfoBinding.inflate(inflater,container,false)
 
         binding.call.setOnClickListener{
             callingSomeone()
         }
         binding.contactNumber.setOnClickListener{
-            openWhatsapp()
+            openWhatsapp("+994503432260")
         }
         return binding.root
     }
 
-    private fun openWhatsapp() {
-        val url = "https://wa.me/+9111111111/?text="
+    private fun openWhatsapp(number: String) {
+        val url = "https://wa.me/$number/?text=Salam, necəsən, Hüseyn?"
         val whatsappIntent = Intent(Intent.ACTION_VIEW)
         whatsappIntent.data = Uri.parse(url)
         startActivity(whatsappIntent)

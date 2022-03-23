@@ -54,7 +54,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/main_page_list_item" />
+        tools:listitem="@layout/main_page_list_item"
+        android:layout_marginBottom="48dp"/>
 
 </LinearLayout>
 

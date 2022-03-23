@@ -15,7 +15,7 @@
 
     <item
         android:id="@+id/notifications"
-        android:icon="@drawable/notifications_icon"
+        android:icon="@drawable/bell_icon"
         tools:ignore="MenuTitle" />
     <item
         android:id="@+id/settings"

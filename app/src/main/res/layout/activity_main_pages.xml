@@ -15,7 +15,6 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_navigation"
         android:layout_height="match_parent"
-        android:layout_marginBottom="48dp"
         />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -47,7 +46,7 @@
             android:layout_height="wrap_content"
             app:backgroundTint="#F1D856"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/plus"
+            android:src="@drawable/add_icon"
             android:layout_marginBottom="30dp"
             app:tint="@android:color/white"
             app:fabCustomSize="55dp"
