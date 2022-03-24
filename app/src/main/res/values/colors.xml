@@ -14,11 +14,13 @@
     <color name="information_text">#8D8D8D</color>
     <color name="lightGrey"> #D3D3D3</color>
     <color name="duskYellow">#ffc922 </color>
+    <color name="icon_color_grey">#CCD2E3 </color>
+    <color name="text_color_grey">#9E9E9E</color>
+    <color name="input_color_grey">#FAFAFA</color>
+    <color name="input_seekbar_color">#D1D1D1</color>
     <color name="secondary_main_color">#F1EFDE </color>
 
     <color name="filter_image">#F1D856</color>
     <color name="filter_text">#CCD2E3</color>
-    <color name="main_page_items">#FAFAFA</color>
-    <color name="text_color_grey">#9E9E9E</color>
-
+    <color name="main_page_items">@color/input_color_grey</color>
 </resources>

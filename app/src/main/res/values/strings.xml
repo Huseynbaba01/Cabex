@@ -11,4 +11,9 @@
     <string name="title_car_left">Sifariş etdiyiniz avtomobil başlanğıc nöqtəni tərk etdi.</string>
     <string name="title_follow_on_the_map">Xəritədə izlə</string>
 
+    <string name="title_choose_on_map">Xəritədə seç</string>
+    <string name="title_start_point">Başlanğıc nöqtə</string>
+    <string name="title_destination_point">Son nöqtə</string>
+    <string name="title_about_radius">Radiusun nə olduğu barədə açıqlama</string>
+    <string name="title_search">Axtar</string>
 </resources>
