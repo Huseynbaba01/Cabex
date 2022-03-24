@@ -7,8 +7,8 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.arif.cabex.databinding.MainPageListItemBinding
 
-class MyViewHolder(binding: MainPageListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-    var recylerViewLine1 = binding.rlRecylerViewLine1
+class DriverInfoViewHolder(binding: MainPageListItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    var recyclerViewLine1 = binding.rlRecylerViewLine1
     var recyclerViewLine2 = binding.rlMPLILine2
     var profilePicture : ImageView = binding.profilePicture
     var arrowDown : ImageView = binding.ivArrowDown

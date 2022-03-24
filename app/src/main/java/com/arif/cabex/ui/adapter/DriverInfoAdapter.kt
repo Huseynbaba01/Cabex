@@ -6,22 +6,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arif.cabex.model.DriverInfo
 import com.arif.cabex.databinding.MainPageListItemBinding
-import com.arif.cabex.ui.holder.MyViewHolder
+import com.arif.cabex.ui.holder.DriverInfoViewHolder
 
 class DriverInfoAdapter(var listOfDriverInfo: ArrayList<DriverInfo>) :
-    RecyclerView.Adapter<MyViewHolder>() {
+    RecyclerView.Adapter<DriverInfoViewHolder>() {
 
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DriverInfoViewHolder {
         val binding = MainPageListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding);
+        return DriverInfoViewHolder(binding);
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DriverInfoViewHolder, position: Int) {
         holder.profilePicture.setBackgroundResource(listOfDriverInfo[position].profilePicture!!)
         holder.route.setText(listOfDriverInfo[position].driverRoute)
-        holder.recylerViewLine1.setOnClickListener {
+        holder.recyclerViewLine1.setOnClickListener {
             if (listOfDriverInfo[position].isOpened) {
                 listOfDriverInfo[position].isOpened = false
                 holder.recyclerViewLine2.visibility = View.GONE

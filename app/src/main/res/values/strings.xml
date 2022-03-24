@@ -5,4 +5,10 @@
     <string name="login_here"><u>Daxil olun</u></string>
     <string name="daha_etrafli"><u>Daha Ətraflı</u></string>
     <string name="title_map">Xəritə</string>
+    <string name="title_notifications">Bildirişlər</string>
+    <string name="title_car_gets_closer">Sifariş etdiyiniz avtomobil məntəqəyə yaxışlaşır.</string>
+    <string name="title_car_out_there">Sifariş etdiyiniz avtomobil məntəqəyə çatıb.</string>
+    <string name="title_car_left">Sifariş etdiyiniz avtomobil başlanğıc nöqtəni tərk etdi.</string>
+    <string name="title_follow_on_the_map">Xəritədə izlə</string>
+
 </resources>
