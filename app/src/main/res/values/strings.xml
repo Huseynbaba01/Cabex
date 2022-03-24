@@ -5,4 +5,9 @@
     <string name="login_here"><u>Daxil olun</u></string>
     <string name="daha_etrafli"><u>Daha Ətraflı</u></string>
     <string name="title_map">Xəritə</string>
+    <string name="title_choose_on_map">Xəritədə seç</string>
+    <string name="title_start_point">Başlanğıc nöqtə</string>
+    <string name="title_destination_point">Son nöqtə</string>
+    <string name="title_about_radius">Radiusun nə olduğu barədə açıqlama</string>
+    <string name="title_search">Axtar</string>
 </resources>

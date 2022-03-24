@@ -23,7 +23,7 @@
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/settings"
-        android:name="com.arif.cabex.ui.fragment.SettingsFragment"
+        android:name="com.arif.cabex.ui.fragment.ChooseOnMapFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_settings" />
 </navigation>
