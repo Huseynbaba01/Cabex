@@ -16,4 +16,6 @@
     <string name="title_destination_point">Son nöqtə</string>
     <string name="title_about_radius">Radiusun nə olduğu barədə açıqlama</string>
     <string name="title_search">Axtar</string>
+    <string name="title_filter">Filter</string>
+    <string name="title_time_for_start_point">Başlanğıc nöqtəni tərk etmə vaxtı</string>
 </resources>

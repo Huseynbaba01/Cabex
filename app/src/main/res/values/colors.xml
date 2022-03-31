@@ -19,6 +19,8 @@
     <color name="input_color_grey">#FAFAFA</color>
     <color name="input_seekbar_color">#D1D1D1</color>
     <color name="secondary_main_color">#F1EFDE </color>
+    <color name="main_color">#F1D856</color>
+
 
     <color name="filter_image">#F1D856</color>
     <color name="filter_text">#CCD2E3</color>

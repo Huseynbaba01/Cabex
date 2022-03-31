@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:foregroundGravity="center"
+    app:cardBackgroundColor="@color/secondary_main_color"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/title_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/title_filter"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="52dp"
+            android:layout_alignTop="@id/title_filter"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:padding="0dp"
+            android:cropToPadding="false"
+            android:src="@drawable/close_icon" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/start_point_input_layout"
+            android:layout_width="match_parent"
+            android:layout_below="@id/title_filter"
+            android:hint="@string/title_start_point"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:fontFamily="@font/poppins_medium"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/destination_point_input_layout"
+            android:layout_width="match_parent"
+            android:layout_below="@id/start_point_input_layout"
+            android:hint="@string/title_destination_point"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            android:layout_marginTop="7dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:fontFamily="@font/poppins_medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/time_for_start_point_input_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/destination_point_input_layout"
+            android:layout_marginTop="7dp"
+            android:hint="@string/title_time_for_start_point"
+            app:boxBackgroundColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:fontFamily="@font/poppins_medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_choose_on_map"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_for_start_point_input_layout"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="77dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/on_map_button_icon"
+            android:elevation="1dp"
+            android:fontFamily="@font/poppins_medium"
+            android:padding="16dp"
+            android:text="@string/title_choose_on_map"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:cornerRadius="8dp"
+            app:iconGravity="textStart"
+            app:iconSize="24dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_search"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_choose_on_map"
+            android:layout_marginHorizontal="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/title_search"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginBottom="16dp"
+            app:cornerRadius="8dp"
+            android:padding="16dp"
+            android:backgroundTint="@color/main_color"
+            />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
