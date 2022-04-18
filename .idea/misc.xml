@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/activity_main_pages.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_choose_on_map.xml" value="0.10530714584203928" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_login.xml" value="0.14233907524932005" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_main.xml" value="0.21547669944420692" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_map.xml" value="0.14233907524932005" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_o_t_p.xml" value="0.21547669944420692" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_p_map.xml" value="0.16" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_register.xml" value="0.14233907524932005" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/fragment_settings.xml" value="0.10530714584203928" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/listitem_notifications.xml" value="0.10530714584203928" />
+        <entry key="..\:/AndroidStudioProjects/Cabex/app/src/main/res/layout/main_page_list_item.xml" value="0.10530714584203928" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/Cabex/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1295" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/Cabex/app/src/main/res/drawable/add_icon.xml" value="0.2115" />
         <entry key="..\:/Users/Acer/AndroidStudioProjects/Cabex/app/src/main/res/drawable/custom_seekbar_drawable.xml" value="0.2115" />

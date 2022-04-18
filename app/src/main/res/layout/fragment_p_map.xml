@@ -19,11 +19,11 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_medium"
-            android:text="@string/title_map"
-            android:includeFontPadding="false"
-            android:textColor="@color/black"
-            android:gravity="center"
             android:foregroundGravity="center"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/title_map"
+            android:textColor="@color/black"
             android:textSize="18sp" />
     </RelativeLayout>
     <fragment

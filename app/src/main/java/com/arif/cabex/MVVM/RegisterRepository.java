@@ -12,16 +12,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Repository {
-    static Repository repository;
+public class RegisterRepository {
+    static RegisterRepository registerRepository;
     private ArrayList<LoginData> dataList=new ArrayList<>();
     DatabaseReference dataBase;
 
 
-    public static Repository getRepository(){
-        if(repository==null)
-            repository=new Repository();
-        return repository;
+    public static RegisterRepository getRepository(){
+        if(registerRepository ==null)
+            registerRepository =new RegisterRepository();
+        return registerRepository;
     }
 
     MutableLiveData<ArrayList<LoginData>> getLiveData(){

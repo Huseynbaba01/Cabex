@@ -142,6 +142,7 @@
             android:id="@+id/seek_radius"
             android:layout_width="match_parent"
             android:layout_height="5dp"
+            android:valueTo="10000"
             android:layout_alignTop="@id/radius_input_layout"
             android:layout_alignBottom="@id/radius_input_layout"
             android:layout_toEndOf="@id/radius_input_layout"
@@ -152,8 +153,7 @@
             android:value="0.18"
             app:thumbColor="@color/icon_color_grey"
             app:trackColorActive="@color/icon_color_grey"
-            app:trackColorInactive="@color/icon_color_grey"
-            />
+            app:trackColorInactive="@color/icon_color_grey" />
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

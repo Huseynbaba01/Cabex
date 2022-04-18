@@ -4,29 +4,23 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.MutableLiveData;
 
 import com.arif.cabex.helper.CommonOperationHelper;
-import com.arif.cabex.model.LoginData;
 import com.arif.cabex.model.User;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class RegisterViewModel extends ViewModel {
-    public Repository repo;
+    public RegisterRepository repo;
     FragmentActivity activity;
     private FirebaseAuth auth = FirebaseAuth.getInstance();
     private boolean isEmailSelected=false,isVerified=false;
