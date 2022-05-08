@@ -17,7 +17,7 @@
         <TextView
             android:id="@+id/title_filter"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_heignbfngbknfgbkflgnkht="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_medium"
