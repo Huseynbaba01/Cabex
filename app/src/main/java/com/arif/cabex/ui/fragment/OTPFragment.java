@@ -24,15 +24,20 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class OTPFragment extends BaseFragment {
 	private FragmentOTPBinding binding;
-	private String verificationCode;
+	private String verificationCode,phoneNumber,password,countryCode;
 	MyFirebase myFirebase = new MyFirebase();
 	private String TAG = "MyTagHere";
+
 
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		binding = FragmentOTPBinding.inflate(inflater, container, false);
+		phoneNumber = OTPFragmentArgs.fromBundle(getArguments()).getPhoneNumber();
+		password = OTPFragmentArgs.fromBundle(getArguments()).getPassword();
+		countryCode = OTPFragmentArgs.fromBundle(getArguments()).getCountryCode();
+		phoneNumber = countryCode + phoneNumber;
 
 
 		addTextChangedListeners();
@@ -53,7 +58,7 @@ public class OTPFragment extends BaseFragment {
 				}
 				else{
 					PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode,myVerificationCode);
-					myFirebase.verifyWithCredential(credential);
+					myFirebase.verifyWithCredential(credential,phoneNumber,password);
 				}
 			}
 		});

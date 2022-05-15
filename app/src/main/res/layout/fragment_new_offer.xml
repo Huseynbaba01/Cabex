@@ -53,6 +53,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/beginningPoint"
                 android:textSize="18sp"
                 android:inputType="textAutoComplete"
                 android:textColor="#353535"
@@ -80,6 +81,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/lastPoint"
                 android:textSize="18sp"
                 android:textColor="#353535"
                 android:inputType="textAutoComplete"
@@ -112,6 +114,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/leavingTime1"
                     android:textSize="18sp"
                     android:inputType="textAutoComplete"
                     android:textColor="#353535"
@@ -138,6 +141,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/leavingTime2"
                     android:textSize="18sp"
                     android:textColor="#353535"
                     android:inputType="textAutoComplete"
@@ -169,6 +173,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/paymentOffer"
                 android:textSize="18sp"
                 android:textColor="#353535"
                 android:inputType="textAutoComplete"
@@ -207,6 +212,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/yourLocation"
                     android:textSize="18sp"
                     android:textColor="#353535"
                     android:inputType="textAutoComplete"
@@ -245,6 +251,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/additionalNotes"
                 android:textSize="16sp"
                 android:textColor="#353535"
                 android:scrollbarDefaultDelayBeforeFade="100"

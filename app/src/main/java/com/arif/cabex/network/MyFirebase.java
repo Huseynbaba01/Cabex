@@ -2,19 +2,17 @@ package com.arif.cabex.network;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.arif.cabex.database.NewOfferDatabase;
 import com.arif.cabex.event.ClearEditBoxesEvent;
 import com.arif.cabex.event.CodeSentEvent;
 import com.arif.cabex.event.EndRegistrationEvent;
 import com.arif.cabex.event.ResendPasswordWithEmailEvent;
 import com.arif.cabex.model.User;
-import com.arif.cabex.ui.activity.MainActivity;
-import com.arif.cabex.ui.activity.MainPagesActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -24,15 +22,25 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.greenrobot.eventbus.EventBus;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class MyFirebase {
     FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private String TAG = "MyTagHere";
 
     public void registerWithPhoneNumber(String countryCode, Activity activity, String basePhoneNumber, String password){
@@ -102,10 +110,11 @@ public class MyFirebase {
     }
 
 
-    public void verifyWithCredential(PhoneAuthCredential credential){
+    public void verifyWithCredential(PhoneAuthCredential credential,String phoneNumber,String password){
         auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                addPhoneNumberAndPasswordToGlobalDatabase(phoneNumber,password);
                 EventBus.getDefault().postSticky(new EndRegistrationEvent());
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -115,6 +124,21 @@ public class MyFirebase {
             }
         });
     }
+
+    public void addPhoneNumberAndPasswordToGlobalDatabase(String phoneNumber,String password){
+        HashMap<String,String> user = new HashMap<>();
+        user.put("phoneNumber",phoneNumber);
+        user.put("password",password);
+        fireStore.collection("UsersWithPhoneNumber")
+                .add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                    }
+                });
+
+    }
+
 
     public void sendPasswordResetEmail(String email, Context context){
         auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -147,12 +171,58 @@ public class MyFirebase {
     }
 
 
-    public void signWithPhoneNumber(){
+    public void signWithPhoneNumber(String phoneNumber,String password){
+        fireStore.collection("UsersWithPhoneNumber").whereEqualTo("phoneNumber",phoneNumber).whereEqualTo("password",password).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.getResult().isEmpty()){
+                            //TODO sign in with phone number completed
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailureDuringSignINWithPhoneNumber: "+e.getMessage());
+                    }
+                });
 
     }
 
 
-    public void addNewOffer(){
+    public void addNewOffer(NewOfferDatabase newOfferDatabase){
+        DatabaseReference reference = firebaseDatabase.getReference("PassengersOffer");
+        reference.setValue("Hello world");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String value = snapshot.getValue(String.class);
+                Log.d(TAG, "onDataChange: "+value);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void Instance(){
+        //TODO search quality of these codes,then return to addNewOffer method
+        DatabaseReference reference = firebaseDatabase.getReference("PassengersOffer");
+        reference.setValue("Hello world");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String value = snapshot.getValue(String.class);
+                Log.d(TAG, "onDataChange: "+value);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
