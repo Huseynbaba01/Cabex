@@ -1,5 +1,6 @@
 package com.arif.cabex.MVVM;
 
+import android.content.Context;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
@@ -40,7 +41,7 @@ public class RegisterViewModel extends ViewModel {
             Toast.makeText(activity, "E-poçtunuz düz deyil, yoxlayıb yenidən cəhd edin!", Toast.LENGTH_SHORT).show();
         }
         else{
-            myFirebase.registerWithEmail(userName,password);
+            myFirebase.registerWithEmail(userName,password,activity);
         }
 
 
@@ -56,6 +57,9 @@ public class RegisterViewModel extends ViewModel {
             Toast.makeText(activity, "Telefon nömrəniz düz deyil, yoxlayıb yenidən cəhd edin!", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+
 
 
 

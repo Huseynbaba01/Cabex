@@ -1,14 +1,20 @@
 package com.arif.cabex.network;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.arif.cabex.event.ClearEditBoxesEvent;
 import com.arif.cabex.event.CodeSentEvent;
 import com.arif.cabex.event.EndRegistrationEvent;
+import com.arif.cabex.event.ResendPasswordWithEmailEvent;
 import com.arif.cabex.model.User;
+import com.arif.cabex.ui.activity.MainActivity;
+import com.arif.cabex.ui.activity.MainPagesActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -27,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MyFirebase {
     FirebaseAuth auth = FirebaseAuth.getInstance();
+    private String TAG = "MyTagHere";
 
     public void registerWithPhoneNumber(String countryCode, Activity activity, String basePhoneNumber, String password){
         String phoneNumber = "+"+
@@ -53,7 +60,7 @@ public class MyFirebase {
 
                     @Override
                     public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                        Log.d("MyTagHere", "onCodeSent: "+s);
+                        Log.d(TAG, "onCodeSent: "+s);
                         EventBus.getDefault().postSticky(new CodeSentEvent(s));
                         super.onCodeSent(s, forceResendingToken);
 
@@ -62,11 +69,16 @@ public class MyFirebase {
                 .build());
     }
 
-    public void registerWithEmail(String userName, String password){
+    public void registerWithEmail(String userName, String password,Context context){
         auth.createUserWithEmailAndPassword(
                 userName,
                 password)
                 .addOnCompleteListener(task -> {
+
+                    Toast.makeText(context, "E-poçtunuzu yoxlayın və gələn linkdən qeydiyyatı təsdiqləyin.", Toast.LENGTH_LONG).show();
+                    EventBus.getDefault().postSticky(new ClearEditBoxesEvent());
+
+                    if(task.isSuccessful())
                     FirebaseDatabase.getInstance()
                             .getReference("User")
                             .child(auth.getCurrentUser().getUid())
@@ -75,11 +87,16 @@ public class MyFirebase {
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                        @Override
                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                           //TODO confirm verification and close target vindow
-                                                           Log.d("MyTagHere", "onComplete: Verification with email is confirmed!");
+
                                                        }
                                                    }
-                            );
+
+                            ).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d(TAG, "onFailure: "+e.getMessage());
+                        }
+                    });
                     auth.getCurrentUser().sendEmailVerification();
                 });
     }
@@ -97,5 +114,45 @@ public class MyFirebase {
                 Log.d("MyTagHere", "Verification failed: "+e.getMessage());
             }
         });
+    }
+
+    public void sendPasswordResetEmail(String email, Context context){
+        auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Log.d("MyTagHere", "onComplete: Email Resend Confirmed");
+                if(task.isSuccessful())
+                    EventBus.getDefault().postSticky(new ResendPasswordWithEmailEvent());
+                else
+                    Toast.makeText(context, "E-poçtunuz düz deyil və ya qeydiyyatdan keçməyib, yoxlayıb yenidən cəhd edin!", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("MyTagHere", "onFailure: Your password resend did not succeeded: "+e.getMessage());
+            }
+        });
+    }
+
+
+    public void signInWithEmail(String email,String password){
+        auth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        //TODO Confirm the sign in and you will be able to move to another page
+                        Log.d(TAG, "onComplete: you perfectly signed in!");
+                    }
+                });
+    }
+
+
+    public void signWithPhoneNumber(){
+
+    }
+
+
+    public void addNewOffer(){
+
     }
 }
