@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/enter_navigation"
-    app:startDestination="@id/newOffer">
+    app:startDestination="@id/forgetPassword">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -20,7 +20,7 @@
             app:argType="boolean"/>
         <action
             android:id="@+id/action_loginFragment_to_forgetPassword2"
-            app:destination="@id/forgetPassword2" />
+            app:destination="@id/forgetPassword" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -59,13 +59,10 @@
             />
     </fragment>
     <fragment
-        android:id="@+id/forgetPassword2"
+        android:id="@+id/forgetPassword"
         android:name="com.arif.cabex.ui.fragment.ForgetPassword"
         android:label="fragment_forget_password"
         tools:layout="@layout/fragment_forget_password" >
-        <argument
-            android:name="isEmailSelected"
-            app:argType="boolean"/>
     </fragment>
     <fragment
         android:id="@+id/newOffer"

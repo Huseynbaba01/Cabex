@@ -81,7 +81,7 @@ public class LoginFragment extends Fragment {
 	}
 
 	private void moveToForgetPasswordFragment(View view) {
-		NavHostFragment.findNavController(this).navigate(LoginFragmentDirections.actionLoginFragmentToForgetPassword2(isEmailSection));
+		NavHostFragment.findNavController(this).navigate(LoginFragmentDirections.actionLoginFragmentToForgetPassword2());
 	}
 
 	private void onRegistrationLinkClicked(View view) {

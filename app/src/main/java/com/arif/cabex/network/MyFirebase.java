@@ -40,7 +40,7 @@ import java.util.concurrent.TimeUnit;
 public class MyFirebase {
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
-    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    FirebaseDatabase firebaseDatabase;
     private String TAG = "MyTagHere";
 
     public void registerWithPhoneNumber(String countryCode, Activity activity, String basePhoneNumber, String password){
@@ -193,7 +193,7 @@ public class MyFirebase {
 
     public void addNewOffer(NewOfferDatabase newOfferDatabase){
         DatabaseReference reference = firebaseDatabase.getReference("PassengersOffer");
-        reference.setValue("Hello world");
+        reference.setValue(newOfferDatabase);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -208,20 +208,40 @@ public class MyFirebase {
         });
     }
 
-    public void Instance(){
+    public void instance(){
         //TODO search quality of these codes,then return to addNewOffer method
-        DatabaseReference reference = firebaseDatabase.getReference("PassengersOffer");
-        reference.setValue("Hello world");
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference("message").child("myInstance");
+        reference.setValue(new NewOfferDatabase("Shamkir","Amsterdam","12","20","myPaymentOffer","MyLocation","There is not any additional notes!"));
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue(String.class);
-                Log.d(TAG, "onDataChange: "+value);
+//                NewOfferDatabase value = snapshot.getValue(NewOfferDatabase.class);
+                Log.d(TAG, "onDataChange: Done:"+snapshot.getValue(NewOfferDatabase.class).getBeginningPoint());
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG, "onCancelled:Data can not changed: "+error.getMessage());
+            }
+        });
+    }
 
+    public void getData(){
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        Log.d(TAG, "getData: It goes in!");
+        firebaseDatabase.getReference("message").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(task.isSuccessful())
+                   Log.d(TAG, "onComplete: "+task.getResult());
+                else
+                    Log.d(TAG, "onComplete: "+task.getException());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "onFailure: "+e.getMessage());
             }
         });
     }

@@ -1,9 +1,9 @@
 package com.arif.cabex.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
 
 import android.text.InputType;
 import android.util.Log;
@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.arif.cabex.R;
 import com.arif.cabex.databinding.FragmentForgetPasswordBinding;
 import com.arif.cabex.event.ResendPasswordWithEmailEvent;
 import com.arif.cabex.helper.CommonOperationHelper;
@@ -34,8 +33,11 @@ public class ForgetPassword extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentForgetPasswordBinding.inflate(inflater);
-        isEmailSection = ForgetPasswordArgs.fromBundle(getArguments()).getIsEmailSelected();
         myFirebase = new MyFirebase();
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+        isEmailSection = sharedPreferences.getString("section","email").equals("email");
+
 
         addTexts();
         setClickListeners();
@@ -63,7 +65,21 @@ public class ForgetPassword extends BaseFragment {
         binding.backIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Objects.requireNonNull(getActivity()).onBackPressed();
+                requireActivity().onBackPressed();
+            }
+        });
+
+        binding.instance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myFirebase.instance();
+            }
+        });
+
+        binding.getInstance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myFirebase.getData();
             }
         });
 
