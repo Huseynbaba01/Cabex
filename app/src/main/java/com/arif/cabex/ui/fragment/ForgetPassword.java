@@ -69,19 +69,6 @@ public class ForgetPassword extends BaseFragment {
             }
         });
 
-        binding.instance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myFirebase.instance();
-            }
-        });
-
-        binding.getInstance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myFirebase.getData();
-            }
-        });
 
 
         binding.send.setOnClickListener(this::releaseAccount);

@@ -104,7 +104,7 @@ public class LoginFragment extends Fragment {
 		}
 
 		if(!isEmailSection)
-			myFirebase.signWithPhoneNumber(binding.countryCodePicker.getSelectedCountryCode()+binding.userName.getText().toString(),binding.inputPassword.getText().toString());
+			myFirebase.signWithPhoneNumber(binding.countryCodePicker.getSelectedCountryCode()+binding.userName.getText().toString(),binding.inputPassword.getText().toString(),requireContext());
 		else
 			myFirebase.signInWithEmail(binding.userName.getText().toString(),binding.inputPassword.getText().toString());
 	}

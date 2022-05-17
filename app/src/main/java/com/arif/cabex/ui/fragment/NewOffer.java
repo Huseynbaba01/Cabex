@@ -33,7 +33,7 @@ public class NewOffer extends Fragment {
             @Override
             public void onClick(View v) {
                 if(checkTextBoxes())
-                myFirebase.addNewOffer(new NewOfferDatabase(binding.beginningPoint.getText().toString(),binding.lastPoint.getText().toString(),binding.leavingTime1.getText().toString(),binding.leavingTime2.toString(),binding.paymentOffer.getText().toString(),binding.yourLocation.getText().toString(),binding.additionalNotes.getText().toString()));
+                myFirebase.addNewOffer(new NewOfferDatabase(binding.beginningPoint.getText().toString(),binding.lastPoint.getText().toString(),binding.leavingTime1.getText().toString(),binding.leavingTime2.toString(),binding.paymentOffer.getText().toString(),binding.yourLocation.getText().toString(),binding.additionalNotes.getText().toString(),false));
             }
         });
     }

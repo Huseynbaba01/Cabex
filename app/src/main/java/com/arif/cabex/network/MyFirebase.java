@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -41,7 +42,7 @@ public class MyFirebase {
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
     FirebaseDatabase firebaseDatabase;
-    private String TAG = "MyTagHere";
+    private final String TAG = "MyTagHere";
 
     public void registerWithPhoneNumber(String countryCode, Activity activity, String basePhoneNumber, String password){
         String phoneNumber = "+"+
@@ -54,10 +55,6 @@ public class MyFirebase {
                     @Override
                     public void onVerificationCompleted(@NonNull @NotNull PhoneAuthCredential phoneAuthCredential) {
                         Log.d("MyTagHere", "onVerificationCompleted: Verification is Completed now!");
-                        FirebaseDatabase.getInstance()
-                                .getReference("Users")
-                                .child(auth.getCurrentUser().getUid())
-                                .setValue(new User(basePhoneNumber, password));
                     }
 
                     @Override
@@ -84,28 +81,16 @@ public class MyFirebase {
                 .addOnCompleteListener(task -> {
 
                     Toast.makeText(context, "E-poçtunuzu yoxlayın və gələn linkdən qeydiyyatı təsdiqləyin.", Toast.LENGTH_LONG).show();
-                    EventBus.getDefault().postSticky(new ClearEditBoxesEvent());
+                    if(task.isSuccessful()) {
+                        EventBus.getDefault().postSticky(new ClearEditBoxesEvent());
+                        auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                addEmailAndPasswordToGlobalDatabase(userName,password);
+                            }
+                        });
 
-                    if(task.isSuccessful())
-                    FirebaseDatabase.getInstance()
-                            .getReference("User")
-                            .child(auth.getCurrentUser().getUid())
-                            .setValue(new User(userName,
-                                    password))
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                       @Override
-                                                       public void onComplete(@NonNull Task<Void> task) {
-
-                                                       }
-                                                   }
-
-                            ).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d(TAG, "onFailure: "+e.getMessage());
-                        }
-                    });
-                    auth.getCurrentUser().sendEmailVerification();
+                    }
                 });
     }
 
@@ -133,10 +118,22 @@ public class MyFirebase {
                 .add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
-
+                        Log.d(TAG, "onComplete: addingTo Email is completed!");
                     }
                 });
 
+    }
+
+    public void addEmailAndPasswordToGlobalDatabase(String email,String password){
+                HashMap<String,String> user = new HashMap<>();
+                user.put("email",email);
+                user.put("password",password);
+                fireStore.collection("UsersWithEmail").add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentReference> task) {
+
+                    }
+                });
     }
 
 
@@ -171,14 +168,16 @@ public class MyFirebase {
     }
 
 
-    public void signWithPhoneNumber(String phoneNumber,String password){
-        fireStore.collection("UsersWithPhoneNumber").whereEqualTo("phoneNumber",phoneNumber).whereEqualTo("password",password).get()
+    public void signWithPhoneNumber(String phoneNumber,String password,Context mContext){
+        fireStore.collection("phoneNumber").whereEqualTo("phoneNumber",phoneNumber).whereEqualTo("password",password).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.getResult().isEmpty()){
+                        if(!task.getResult().isEmpty()){
                             //TODO sign in with phone number completed
-                        }
+                            Log.d(TAG, "onComplete: Sign in is completed!");
+                        }else
+                            Toast.makeText(mContext,"Your data is not exists!",Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -197,7 +196,7 @@ public class MyFirebase {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String value = snapshot.getValue(String.class);
+                String value = snapshot.getValue(NewOfferDatabase.class).getBeginningPoint();
                 Log.d(TAG, "onDataChange: "+value);
             }
 
@@ -208,41 +207,9 @@ public class MyFirebase {
         });
     }
 
-    public void instance(){
-        //TODO search quality of these codes,then return to addNewOffer method
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference reference = firebaseDatabase.getReference("message").child("myInstance");
-        reference.setValue(new NewOfferDatabase("Shamkir","Amsterdam","12","20","myPaymentOffer","MyLocation","There is not any additional notes!"));
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                NewOfferDatabase value = snapshot.getValue(NewOfferDatabase.class);
-                Log.d(TAG, "onDataChange: Done:"+snapshot.getValue(NewOfferDatabase.class).getBeginningPoint());
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.d(TAG, "onCancelled:Data can not changed: "+error.getMessage());
-            }
-        });
+    public void resetPasswordWithPhoneNumber(String phoneNumber,String password,String newPassword){
+        //TODO How to check if phoneNumber is authenticated on firebase
     }
 
-    public void getData(){
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        Log.d(TAG, "getData: It goes in!");
-        firebaseDatabase.getReference("message").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if(task.isSuccessful())
-                   Log.d(TAG, "onComplete: "+task.getResult());
-                else
-                    Log.d(TAG, "onComplete: "+task.getException());
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "onFailure: "+e.getMessage());
-            }
-        });
-    }
 }

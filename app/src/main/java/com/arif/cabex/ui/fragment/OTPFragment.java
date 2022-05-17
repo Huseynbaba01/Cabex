@@ -58,7 +58,7 @@ public class OTPFragment extends BaseFragment {
 				}
 				else{
 					PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode,myVerificationCode);
-					myFirebase.verifyWithCredential(credential,phoneNumber,password);
+					myFirebase.verifyWithCredential(credential,countryCode+phoneNumber,password);
 				}
 			}
 		});
