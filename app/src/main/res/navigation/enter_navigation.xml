@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/enter_navigation"
-    app:startDestination="@id/newOffer">
+    android:id="@+id/enter_navigation">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -63,10 +62,8 @@
         android:name="com.arif.cabex.ui.fragment.ForgetPassword"
         android:label="fragment_forget_password"
         tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPassword_to_OTPFragment"
+            app:destination="@id/OTPFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/newOffer"
-        android:name="com.arif.cabex.ui.fragment.NewOffer"
-        android:label="fragment_new_offer"
-        tools:layout="@layout/fragment_new_offer" />
 </navigation>

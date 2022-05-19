@@ -12,7 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.arif.cabex.databinding.FragmentForgetPasswordBinding;
+import com.arif.cabex.event.MoveToOTPFromForgetPasswordEvent;
 import com.arif.cabex.event.ResendPasswordWithEmailEvent;
 import com.arif.cabex.helper.CommonOperationHelper;
 import com.arif.cabex.network.MyFirebase;
@@ -20,8 +23,6 @@ import com.arif.cabex.ui.activity.MainPagesActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.Objects;
 
 public class ForgetPassword extends BaseFragment {
     FragmentForgetPasswordBinding binding;
@@ -82,6 +83,14 @@ public class ForgetPassword extends BaseFragment {
                 Toast.makeText(getActivity(), "Telefon nömrəsi boş ola bilməz, yazıb yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
 
             return;
+        }else{
+            if(!isEmailSection) {
+                myFirebase.searchExistenceOfPhoneNumber(binding.countryCodePicker.getSelectedCountryCode() + binding.editCenter.getText().toString(), requireContext());
+            }
+            else{
+                myFirebase.sendPasswordResetEmail(binding.editCenter.getText().toString(),requireContext());
+                Toast.makeText(requireContext(), "Link for reset password is sent to your email!", Toast.LENGTH_SHORT).show();
+            }
         }
 
         sendPassword();
@@ -108,5 +117,10 @@ public class ForgetPassword extends BaseFragment {
     public void onEmailPasswordResend(ResendPasswordWithEmailEvent resendPasswordWithEmailEvent){
         Intent intent =new Intent(requireContext(), MainPagesActivity.class);
         startActivity(intent);
+    }
+
+    @Subscribe
+    public void onMoveToOtpEvent(MoveToOTPFromForgetPasswordEvent move){
+        NavHostFragment.findNavController(this).navigate(ForgetPasswordDirections.actionForgetPasswordToOTPFragment("MyPassword", binding.countryCodePicker.getSelectedCountryCode(), binding.editCenter.getText().toString()));
     }
 }

@@ -32,8 +32,10 @@ public class NewOffer extends Fragment {
         binding.share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkTextBoxes())
-                myFirebase.addNewOffer(new NewOfferDatabase(binding.beginningPoint.getText().toString(),binding.lastPoint.getText().toString(),binding.leavingTime1.getText().toString(),binding.leavingTime2.toString(),binding.paymentOffer.getText().toString(),binding.yourLocation.getText().toString(),binding.additionalNotes.getText().toString(),false));
+                if(checkTextBoxes()) {
+                    myFirebase.addNewOffer(new NewOfferDatabase(binding.beginningPoint.getText().toString(), binding.lastPoint.getText().toString(), binding.leavingTime1.getText().toString(), binding.leavingTime2.toString(), binding.paymentOffer.getText().toString(), binding.yourLocation.getText().toString(), binding.additionalNotes.getText().toString(), false));
+                    //TODO return to main page
+                }
             }
         });
     }

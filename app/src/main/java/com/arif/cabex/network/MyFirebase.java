@@ -11,6 +11,7 @@ import com.arif.cabex.database.NewOfferDatabase;
 import com.arif.cabex.event.ClearEditBoxesEvent;
 import com.arif.cabex.event.CodeSentEvent;
 import com.arif.cabex.event.EndRegistrationEvent;
+import com.arif.cabex.event.MoveToOTPFromForgetPasswordEvent;
 import com.arif.cabex.event.ResendPasswordWithEmailEvent;
 import com.arif.cabex.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -208,8 +209,19 @@ public class MyFirebase {
     }
 
 
-    public void resetPasswordWithPhoneNumber(String phoneNumber,String password,String newPassword){
-        //TODO How to check if phoneNumber is authenticated on firebase
+    public void searchExistenceOfPhoneNumber(String phoneNumber, Context mContext){
+        fireStore.collection("phoneNumber").whereEqualTo("phoneNumber",phoneNumber).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(!task.getResult().isEmpty()){
+                            EventBus.getDefault().postSticky(new MoveToOTPFromForgetPasswordEvent());
+                            Log.d(TAG, "onComplete: Sign in is completed!");
+                        }else
+                            Toast.makeText(mContext,"Your data is not exists!",Toast.LENGTH_LONG).show();
+                    }
+                })
+                .addOnFailureListener(e -> Log.d(TAG, "onFailureDuringSignINWithPhoneNumber: "+e.getMessage()));
     }
 
 }
