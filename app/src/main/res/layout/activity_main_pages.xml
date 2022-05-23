@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.activity.MainPagesActivity"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.MainPagesActivity">
+
     <fragment
+
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_width="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/main_navigation"
         android:layout_height="match_parent"
-        />
+        app:defaultNavHost="true"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:navGraph="@navigation/main_navigation" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -33,9 +32,9 @@
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationView"
                 android:layout_width="match_parent"
-                android:background="#00000000"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="16dp"
+                android:background="#00000000"
                 app:menu="@menu/bottom_navigation_menu" />
 
         </com.google.android.material.bottomappbar.BottomAppBar>
@@ -44,14 +43,14 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="#F1D856"
+            android:layout_marginBottom="30dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/add_icon"
-            android:layout_marginBottom="30dp"
-            app:tint="@android:color/white"
+            app:backgroundTint="#F1D856"
             app:fabCustomSize="55dp"
+            app:layout_anchor="@id/bottomAppBar"
             app:maxImageSize="40dp"
-            app:layout_anchor="@id/bottomAppBar" />
+            app:tint="@android:color/white" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

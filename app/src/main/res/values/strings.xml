@@ -16,4 +16,33 @@
     <string name="title_destination_point">Son nöqtə</string>
     <string name="title_about_radius">Radiusun nə olduğu barədə açıqlama</string>
     <string name="title_search">Axtar</string>
+    <string name="title_order_confirmed">Sifarişiniz uğurla təsdiq olundu</string>
+    <string name="title_decline_order">Sifarişi ləğv et</string>
+    <string name="title_close_fragment">Bağla</string>
+    <string name="title_reset_password">Şifrəni yenilə</string>
+    <string name="button_text_send">Göndər</string>
+    <string name="title_reset_password_with_phone">Qeydiyyatdan keçdiyiniz telefon nömrənizi qeyd edin, həmin nömrənizə yeni şifrə göndəriləcək</string>
+    <string name="title_phone_number">Telefon nömrəsi</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_change_profile_picture"><u>Profil şəklini dəyişdir</u></string>
+    <string name="title_name">Ad</string>
+    <string name="title_surname">Soyad</string>
+    <string name="title_e_mail">E-poçt</string>
+    <string name="title_car_name">Avtomobilin markası</string>
+    <string name="title_plate_number">Avtomobilin nömrəsi</string>
+    <string name="title_number_of_seats">Oturacaqların sayı</string>
+    <string name="title_repeat_password">Şifrəni yenidən yaz</string>
+    <string name="title_new_password">Yeni şifrə</string>
+    <string name="title_remember_changes">Dərişiklikləri yadda saxla</string>
+    <string name="title_reset">Yenilə</string>
+    <string name="title_current_password">İndiki şifrə</string>
+
+<!--    <string name="title_starting_point">Başlanğıc nöqtəsi</string>-->
+<!--    <string name="title_end_point">Son nöqtə</string>-->
+    <string name="title_departure_time">Başlanğıc nöqtəni tərk etmə vaxtı</string>
+    <string name="title_min">min</string>
+    <string name="title_max">max</string>
+    <string name="title_price_range">Qiymət aralığı</string>
+    <string name="title_distance_range">Məsafə aralıği</string>
+    <string name="title_or">yaxud</string>
 </resources>

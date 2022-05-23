@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.RegisterFragment">
 
     <TextView
         android:id="@+id/title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hesab yarat"
-        android:textSize="30sp"
         android:layout_margin="0dp"
-        android:textColor="@color/black"
         android:fontFamily="@font/poppins_bold"
-        android:layout_width="wrap_content">
-    </TextView>
+        android:text="Hesab yarat"
+        android:textColor="@color/black"
+        android:textSize="30sp"></TextView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -110,62 +109,61 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hints_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/hints_layout"
-        >
+        android:layout_alignParentBottom="true">
+
         <TextView
             android:id="@+id/account_hint"
-            android:fontFamily="@font/poppins_medium"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/poppins_medium"
             android:text="Hesabınız var?"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            android:layout_marginBottom="15dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@id/login_link"
-            />
-        <TextView
-            android:layout_marginBottom="15dp"
-            android:id="@+id/login_link"
-            android:text="@string/login_here"
-            android:textSize="15sp"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="#FF9800"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/account_hint"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/login_link"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/login_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/login_here"
+            android:textColor="#FF9800"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/account_hint" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
-        android:layout_above="@id/hints_layout"
-        android:layout_marginBottom="5dp"
-        android:elevation="2dp"
-        android:layout_centerHorizontal="true"
         android:id="@+id/google_button"
-        android:layout_alignStart="@id/sign_up"
-        android:layout_alignEnd="@id/sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
+        android:layout_above="@id/hints_layout"
+        android:layout_alignStart="@id/sign_up"
+        android:layout_alignEnd="@id/sign_up"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:elevation="2dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
-                android:layout_toStartOf="@+id/google_hint"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_margin="10dp"
-                android:src="@drawable/google_icon"
-                />
+                android:layout_toStartOf="@+id/google_hint"
+                android:src="@drawable/google_icon" />
 
             <TextView
                 android:id="@+id/google_hint"
@@ -203,32 +201,32 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_centerVertical="true"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <com.hbb20.CountryCodePicker
-                android:visibility="gone"
                 android:id="@+id/country_code_picker"
-                app:ccp_defaultPhoneCode="994"
-                app:ccp_showNameCode="false"
-                app:ccp_showFlag="false"
-                android:layout_marginTop="-8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:layout_width="wrap_content"/>
+                android:layout_marginTop="-8dp"
+                android:visibility="gone"
+                app:ccp_defaultPhoneCode="994"
+                app:ccp_showFlag="false"
+                app:ccp_showNameCode="false" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/userName_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                >
+                android:hint="Email">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edit_userName"
                     android:layout_width="match_parent"
@@ -239,23 +237,23 @@
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_layout"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="25dp"
-            app:passwordToggleEnabled="true"
-            android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="25dp"
+            app:passwordToggleEnabled="true">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_password"
-                android:hint="Şifrə"
-                android:inputType="textPassword"
-                android:fontFamily="@font/poppins_light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:fontFamily="@font/poppins_light"
+                android:hint="Şifrə"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 

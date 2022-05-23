@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.fragment.app.Fragment
 import com.arif.cabex.databinding.FragmentDriverInfoBinding
+import com.arif.cabex.ui.dialog.ConfirmOrderDialog
 
 
 class DriverMoreInfoFragment : Fragment() {
@@ -25,6 +28,11 @@ class DriverMoreInfoFragment : Fragment() {
         }
         binding.contactNumber.setOnClickListener{
             openWhatsapp("+994503432260")
+        }
+        binding.order.setOnClickListener {
+            val dialog = ConfirmOrderDialog(requireContext())
+            dialog.show()
+            dialog.window?.setLayout(MATCH_PARENT, WRAP_CONTENT)
         }
         return binding.root
     }

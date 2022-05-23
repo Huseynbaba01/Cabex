@@ -10,6 +10,7 @@
     <color name="dark_yellow">#FFC107</color>
     <color name="dark_white">#CABFAB</color>
     <color name="dark_red">#780404</color>
+    <color name="light_red">#E28579</color>
     <color name="black_text_color">#353535</color>
     <color name="information_text">#8D8D8D</color>
     <color name="lightGrey"> #D3D3D3</color>
@@ -19,8 +20,10 @@
     <color name="input_color_grey">#FAFAFA</color>
     <color name="input_seekbar_color">#D1D1D1</color>
     <color name="secondary_main_color">#F1EFDE </color>
-
+    <color name="light_green">#86D978</color>
     <color name="filter_image">#F1D856</color>
     <color name="filter_text">#CCD2E3</color>
     <color name="main_page_items">@color/input_color_grey</color>
+    <color name="wire_back_ground">#737373</color>
+
 </resources>
