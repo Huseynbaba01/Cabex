@@ -2,8 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/enter_navigation"
-    app:startDestination="@id/loginFragment">
+    android:id="@+id/enter_navigation">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -16,8 +15,11 @@
             app:popUpTo="@id/registerFragment"
             app:popUpToInclusive="true" />
         <argument
-            android:name="myArg"
-            app:argType="integer"/>
+            android:name="isEmailSection"
+            app:argType="boolean"/>
+        <action
+            android:id="@+id/action_loginFragment_to_forgetPassword2"
+            app:destination="@id/forgetPassword" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -27,9 +29,9 @@
         <action
             android:id="@+id/action_registerFragment_to_OTPFragment"
             app:destination="@id/OTPFragment"
-            app:popUpTo="@id/OTPFragment"
-            app:popUpToInclusive="true" />
-        <argument android:name="myArg" />
+            app:popUpTo="@id/registerFragment"
+            app:popUpToInclusive="true" >
+        </action>
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -41,5 +43,27 @@
         android:id="@+id/OTPFragment"
         android:name="com.arif.cabex.ui.fragment.OTPFragment"
         android:label="fragment_o_t_p"
-        tools:layout="@layout/fragment_o_t_p" />
+        tools:layout="@layout/fragment_o_t_p" >
+        <argument
+            android:name="password"
+            app:argType="string"
+            />
+        <argument
+            android:name="countryCode"
+            app:argType="string"
+            />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPassword"
+        android:name="com.arif.cabex.ui.fragment.ForgetPassword"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPassword_to_OTPFragment"
+            app:destination="@id/OTPFragment" />
+    </fragment>
 </navigation>

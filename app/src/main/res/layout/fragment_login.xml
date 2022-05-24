@@ -92,65 +92,112 @@
             </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+
     <com.google.android.material.button.MaterialButton
-        app:cornerRadius="15dp"
-        android:clickable="true"
-        android:layout_marginBottom="10dp"
         android:id="@+id/sign_in"
-        android:padding="15dp"
-        android:layout_above="@id/google_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/google_button"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="#F1D856"
+        android:clickable="true"
         android:focusable="true"
-            android:text="Daxil ol"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:gravity="center"
-            />
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="Daxil ol"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:cornerRadius="8dp" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_centerVertical="true"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_center"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="8dp"
+            app:contentPadding="10dp"
+            app:strokeColor="#E3DCDC"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/main_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_email"
+                    android:backgroundTint="#2C2C2C"
+                    />
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/country_code_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    app:ccp_defaultNameCode="AZ"
+                    app:ccp_showFlag="false"
+                    app:ccp_showNameCode="false"
+                    app:ccp_showArrow="false"
+                    app:ccp_showPhoneCode="false" />
+
+
+                <EditText
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:hint="E-poçt"
+                    android:inputType="number"
+                    android:screenReaderFocusable="true"
+                    android:letterSpacing="0.1"
+                    android:textSize="20sp"
+                    android:maxLength="20"/>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_number"
-                android:hint="  Telefon nömrəsi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_light"
-                android:maxLines="1"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
             android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_marginBottom="25dp"
-            app:passwordToggleEnabled="true"
-            android:layout_height="wrap_content"
             app:errorEnabled="true"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            >
+            app:passwordToggleEnabled="true">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_password"
-                android:hint="  Şifrə"
-                android:maxLines="1"
-                android:inputType="textPassword"
-                android:fontFamily="@font/poppins_light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:fontFamily="@font/poppins_light"
+                android:hint="  Şifrə"
+                android:inputType="textPassword"
+                android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#8D8D8D"
+            android:id="@+id/forgetPassword"
+            android:text="@string/ifr_ni_unutmusunuz"
+            android:textSize="16sp"
+            android:layout_gravity="right"/>
     </LinearLayout>
 
 

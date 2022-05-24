@@ -45,4 +45,7 @@
     <string name="title_price_range">Qiymət aralığı</string>
     <string name="title_distance_range">Məsafə aralıği</string>
     <string name="title_or">yaxud</string>
+    <string name="title_filter">Filter</string>
+    <string name="title_time_for_start_point">Başlanğıc nöqtəni tərk etmə vaxtı</string>
+    <string name="ifr_ni_unutmusunuz"><u>Şifrəni unutmusunuz?</u></string>
 </resources>
