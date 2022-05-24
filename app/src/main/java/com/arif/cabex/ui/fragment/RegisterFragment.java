@@ -120,7 +120,7 @@ public class RegisterFragment extends BaseFragment {
 	}
 
 	private void moveToLogin(View view) {
-		NavHostFragment.findNavController(this).navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment(isEmailSelected));
+		NavHostFragment.findNavController(this).navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment());
 	}
 
 

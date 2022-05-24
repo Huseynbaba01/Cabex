@@ -15,6 +15,7 @@ import com.arif.cabex.event.CodeSentEvent;
 import com.arif.cabex.event.EndRegistrationEvent;
 import com.arif.cabex.helper.GenericTextWatcher;
 import com.arif.cabex.network.MyFirebase;
+import com.arif.cabex.ui.fragment.OTPFragmentArgs;
 import com.arif.cabex.ui.activity.MainPagesActivity;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -24,6 +25,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 public class OTPFragment extends BaseFragment {
 	private FragmentOTPBinding binding;
+
 	private String verificationCode,phoneNumber,password,countryCode;
 	MyFirebase myFirebase = new MyFirebase();
 	private String TAG = "MyTagHere";

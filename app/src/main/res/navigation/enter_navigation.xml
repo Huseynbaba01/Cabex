@@ -2,7 +2,9 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/enter_navigation">
+    android:id="@+id/enter_navigation"
+    app:startDestination="@id/loginFragment"
+    >
 
     <fragment
         android:id="@+id/loginFragment"
@@ -16,6 +18,7 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="isEmailSection"
+            android:defaultValue="false"
             app:argType="boolean"/>
         <action
             android:id="@+id/action_loginFragment_to_forgetPassword2"
