@@ -202,7 +202,7 @@
                 android:layout_marginTop="10dp"
                 android:stepSize="50.0"
                 android:valueFrom="0.0"
-                android:valueTo="800.0"
+                android:valueTo="3000.0"
                 app:values="@array/initial_range_slider_values"
                 tools:ignore="SpeakableTextPresentCheck" />
 
