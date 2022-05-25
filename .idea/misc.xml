@@ -11,7 +11,9 @@
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_login.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_o_t_p.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_register.xml" value="0.25" />
-        <entry key="..\:/Users/hrzaq/AndroidStudioProjects/Cabex/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/dialog_confirm_order.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/dialog_filter_location.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/fragment_choose_on_map.xml" value="0.22" />
       </map>
     </option>
   </component>
