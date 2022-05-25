@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:paddingBottom="50dp"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -153,6 +154,7 @@
                     android:backgroundTint="@color/icon_color_grey"
                     android:fontFamily="@font/poppins_medium"
                     android:paddingTop="15dp"
+                    android:inputType="textEmailAddress"
                     android:paddingBottom="15dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -269,14 +271,26 @@
         android:foregroundGravity="center"
         android:gravity="center"
         android:includeFontPadding="false"
+        android:layout_marginBottom="28dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:text="@string/title_remember_changes"
         android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@id/lbl_leave"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:cornerRadius="8dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:cornerRadius="8dp" />
 
-
+    <TextView
+        android:id="@+id/lbl_leave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/lbl_leave"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

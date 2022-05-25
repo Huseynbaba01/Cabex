@@ -33,7 +33,7 @@
     <string name="title_number_of_seats">Oturacaqların sayı</string>
     <string name="title_repeat_password">Şifrəni yenidən yaz</string>
     <string name="title_new_password">Yeni şifrə</string>
-    <string name="title_remember_changes">Dərişiklikləri yadda saxla</string>
+    <string name="title_remember_changes">Dəyişiklikləri yadda saxla</string>
     <string name="title_reset">Yenilə</string>
     <string name="title_current_password">İndiki şifrə</string>
 
@@ -48,4 +48,5 @@
     <string name="title_filter">Filter</string>
     <string name="title_time_for_start_point">Başlanğıc nöqtəni tərk etmə vaxtı</string>
     <string name="ifr_ni_unutmusunuz"><u>Şifrəni unutmusunuz?</u></string>
+    <string name="lbl_leave"><u>Hesabdan çıx</u></string>
 </resources>

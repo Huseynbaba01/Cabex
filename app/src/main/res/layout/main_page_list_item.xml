@@ -10,7 +10,7 @@
     android:layout_marginRight="15dp"
     android:backgroundTint="#FAFAFA"
     app:cardCornerRadius="8dp"
-    app:cardElevation="8dp">
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:id="@+id/ll_mainPageListItem2"
@@ -34,6 +34,8 @@
                 app:cardCornerRadius="30dp">
 
                 <ImageView
+                    android:scaleType="fitXY"
+                    android:padding="-5dp"
                     android:id="@+id/profilePicture"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

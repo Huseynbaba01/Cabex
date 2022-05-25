@@ -19,19 +19,32 @@ class DriverInfoAdapter(var listOfDriverInfo: ArrayList<DriverInfo>) :
     }
 
     override fun onBindViewHolder(holder: DriverInfoViewHolder, position: Int) {
-        holder.profilePicture.setBackgroundResource(listOfDriverInfo[position].profilePicture!!)
-        holder.route.setText(listOfDriverInfo[position].driverRoute)
+        val item = listOfDriverInfo[position]
+        holder.profilePicture.setBackgroundResource(item.profilePicture!!)
+        holder.route.text = item.driverRoute
+        holder.fullName.text = item.driverFullName
+        holder.departure.text = item.departurePositionTime
+        holder.carBrand.text = item.carBrand
+        if (item.isOpened) {
+            holder.recyclerViewLine2.visibility = View.VISIBLE
+            holder.arrowDown.rotation = 180f
+        } else {
+            holder.recyclerViewLine2.visibility = View.GONE
+            holder.arrowDown.rotation = 0f
+        }
         holder.recyclerViewLine1.setOnClickListener {
-            if (listOfDriverInfo[position].isOpened) {
-                listOfDriverInfo[position].isOpened = false
+            if (item.isOpened) {
+                item.isOpened = false
                 holder.recyclerViewLine2.visibility = View.GONE
-                holder.arrowDown.rotation = 180f
-            } else {
-                listOfDriverInfo[position].isOpened = true
-                holder.recyclerViewLine2.visibility = View.VISIBLE
                 holder.arrowDown.rotation = 0f
+            } else {
+                item.isOpened = true
+                holder.recyclerViewLine2.visibility = View.VISIBLE
+                holder.arrowDown.rotation = 180f
             }
         }
+
+        holder.seats.text = item.seats
     }
 
     override fun getItemCount(): Int {

@@ -11,9 +11,16 @@
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_login.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_o_t_p.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/activity_main.xml" value="0.14709569577935647" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/activity_main_pages.xml" value="0.35185185185185186" />
         <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/dialog_confirm_order.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/dialog_filter.xml" value="0.14709569577935647" />
         <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/dialog_filter_location.xml" value="0.14722222222222223" />
-        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/fragment_choose_on_map.xml" value="0.22" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/fragment_choose_on_map.xml" value="0.21240942028985507" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/fragment_edit_passenger_profile.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/fragment_main.xml" value="0.14709569577935647" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/fragment_settings.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/User/Desktop/projects/Cabex/app/src/main/res/layout/main_page_list_item.xml" value="0.18" />
       </map>
     </option>
   </component>
