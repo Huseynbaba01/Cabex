@@ -59,7 +59,7 @@ public class RegisterViewModel extends ViewModel {
     private void registerWithPhoneNumber() {
         if(CommonOperationHelper.isValidPhoneNumber(userName, countryCode).isValid())
         {
-            myFirebase.registerWithPhoneNumber(countryCode,activity,userName,password);
+            myFirebase.registerWithPhoneNumber(activity,countryCode+userName);
             EventBus.getDefault().postSticky(new MoveToOTPEvent());
         }
         else{

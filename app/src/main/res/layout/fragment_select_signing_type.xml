@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="20dp"
+    android:paddingTop="16dp"
+    tools:context=".ui.fragment.SelectSigningTypeFragment">
+
+    <ImageView
+        android:layout_width="171dp"
+        android:layout_height="67dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_cabex_logo_white_bck"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        >
+        <ImageView
+            android:id="@+id/rafuk"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_car_driving_rafuk"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <TextView
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="-20dp"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/lbl_app_info"
+            app:layout_constraintTop_toBottomOf="@id/rafuk"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_create"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Hesab yarat"
+            android:textAllCaps="false"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="10dp"
+            app:cornerRadius="8dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_in"
+            android:layout_width="0dp"
+            android:text="Daxil ol"
+            android:textColor="@color/black"
+            android:layout_marginEnd="16dp"
+            android:paddingVertical="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
+            android:layout_weight="0.5"
+            android:backgroundTint="@color/secondary_main_color"
+            android:layout_height="wrap_content"
+            app:cornerRadius="8dp"
+            />
+    </LinearLayout>
+</RelativeLayout>

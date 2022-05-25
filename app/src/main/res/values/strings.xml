@@ -37,8 +37,8 @@
     <string name="title_reset">Yenilə</string>
     <string name="title_current_password">İndiki şifrə</string>
 
-<!--    <string name="title_starting_point">Başlanğıc nöqtəsi</string>-->
-<!--    <string name="title_end_point">Son nöqtə</string>-->
+    <!--    <string name="title_starting_point">Başlanğıc nöqtəsi</string>-->
+    <!--    <string name="title_end_point">Son nöqtə</string>-->
     <string name="title_departure_time">Başlanğıc nöqtəni tərk etmə vaxtı</string>
     <string name="title_min">min</string>
     <string name="title_max">max</string>
@@ -49,4 +49,5 @@
     <string name="title_time_for_start_point">Başlanğıc nöqtəni tərk etmə vaxtı</string>
     <string name="ifr_ni_unutmusunuz"><u>Şifrəni unutmusunuz?</u></string>
     <string name="lbl_leave"><u>Hesabdan çıx</u></string>
+    <string name="lbl_app_info">İndi tətbiqdən istifadə etməyə başla, həm puluna qənaət et, həm də yol yoldaşını tap</string>
 </resources>

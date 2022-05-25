@@ -15,7 +15,7 @@ class DriverInfoAdapter(var listOfDriverInfo: ArrayList<DriverInfo>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DriverInfoViewHolder {
         val binding = MainPageListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return DriverInfoViewHolder(binding);
+        return DriverInfoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: DriverInfoViewHolder, position: Int) {

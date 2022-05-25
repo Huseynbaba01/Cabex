@@ -2,6 +2,7 @@ package com.arif.cabex.network;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -9,16 +10,13 @@ import androidx.annotation.NonNull;
 
 import com.arif.cabex.database.NewOfferDatabase;
 import com.arif.cabex.event.ClearEditBoxesEvent;
-import com.arif.cabex.event.CodeSentEvent;
 import com.arif.cabex.event.EndRegistrationEvent;
 import com.arif.cabex.event.MoveToOTPFromForgetPasswordEvent;
 import com.arif.cabex.event.ResendPasswordWithEmailEvent;
-import com.arif.cabex.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -45,9 +43,11 @@ public class MyFirebase {
     FirebaseDatabase firebaseDatabase;
     private final String TAG = "MyTagHere";
 
-    public void registerWithPhoneNumber(String countryCode, Activity activity, String basePhoneNumber, String password){
-        String phoneNumber = "+"+
-                countryCode+basePhoneNumber;
+
+    public void registerWithPhoneNumber(Activity activity, String phoneNumber){
+        SharedPreferences sharedPreferences = activity.getSharedPreferences("MySharedPref",Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        phoneNumber = "+"+phoneNumber;
         PhoneAuthProvider.verifyPhoneNumber(PhoneAuthOptions.newBuilder(auth)
                 .setPhoneNumber(phoneNumber)       // Phone number to verify
                 .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
@@ -67,7 +67,8 @@ public class MyFirebase {
                     @Override
                     public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         Log.d(TAG, "onCodeSent: "+s);
-                        EventBus.getDefault().postSticky(new CodeSentEvent(s));
+                        myEdit.putString("verificationCode",s);
+                        myEdit.apply();
                         super.onCodeSent(s, forceResendingToken);
 
                     }
@@ -170,7 +171,7 @@ public class MyFirebase {
 
 
     public void signWithPhoneNumber(String phoneNumber,String password,Context mContext){
-        fireStore.collection("phoneNumber").whereEqualTo("phoneNumber",phoneNumber).whereEqualTo("password",password).get()
+        fireStore.collection("UsersWithPhoneNumber").whereEqualTo("phoneNumber",phoneNumber).whereEqualTo("password",password).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -209,19 +210,24 @@ public class MyFirebase {
     }
 
 
-    public void searchExistenceOfPhoneNumber(String phoneNumber, Context mContext){
-        fireStore.collection("phoneNumber").whereEqualTo("phoneNumber",phoneNumber).get()
+    public void searchExistenceOfPhoneNumberFromFirebase(String phoneNumber, Context mContext){
+        fireStore.collection("UsersWithPhoneNumber").whereEqualTo("phoneNumber",phoneNumber).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(!task.getResult().isEmpty()){
+                            registerWithPhoneNumber((Activity) mContext,phoneNumber);
                             EventBus.getDefault().postSticky(new MoveToOTPFromForgetPasswordEvent());
-                            Log.d(TAG, "onComplete: Sign in is completed!");
                         }else
-                            Toast.makeText(mContext,"Your data is not exists!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(mContext,"Telefon nömrəniz düzgün deyil!",Toast.LENGTH_LONG).show();
                     }
                 })
-                .addOnFailureListener(e -> Log.d(TAG, "onFailureDuringSignINWithPhoneNumber: "+e.getMessage()));
+                .addOnFailureListener(e -> Log.d(TAG, "onFailureDuringSignInWithPhoneNumber: "+e.getMessage()));
     }
 
+
+
+    public void logOut(){
+        auth.signOut();
+    }
 }

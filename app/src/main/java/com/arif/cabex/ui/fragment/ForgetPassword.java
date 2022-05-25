@@ -29,6 +29,8 @@ public class ForgetPassword extends BaseFragment {
     private boolean isEmailSection;
     private String TAG = "MyTagHere";
     private MyFirebase myFirebase;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor myEdit;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,7 +38,8 @@ public class ForgetPassword extends BaseFragment {
         binding = FragmentForgetPasswordBinding.inflate(inflater);
         myFirebase = new MyFirebase();
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+        sharedPreferences = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+        myEdit = sharedPreferences.edit();
         isEmailSection = sharedPreferences.getString("section","email").equals("email");
 
 
@@ -78,36 +81,48 @@ public class ForgetPassword extends BaseFragment {
     private void releaseAccount(View view) {
         if(binding.editCenter.getText().toString().equals("")){
             if(isEmailSection)
-            Toast.makeText(getActivity(), "E-poçt ünvanı boş ola bilməz, yazıb yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "E-poçt ünvanı boş ola bilməz, yazıb yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
             else
                 Toast.makeText(getActivity(), "Telefon nömrəsi boş ola bilməz, yazıb yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
 
             return;
         }else{
-            if(!isEmailSection) {
-                myFirebase.searchExistenceOfPhoneNumber(binding.countryCodePicker.getSelectedCountryCode() + binding.editCenter.getText().toString(), requireContext());
+            if (isValid()) {
+                Toast.makeText(requireContext(), "Yazdığınız dəyər düzgün deyil!", Toast.LENGTH_SHORT).show();
+                return;
             }
-            else{
-                myFirebase.sendPasswordResetEmail(binding.editCenter.getText().toString(),requireContext());
-                Toast.makeText(requireContext(), "Link for reset password is sent to your email!", Toast.LENGTH_SHORT).show();
-            }
+            doActions();
         }
 
         sendPassword();
         }
 
+    private void doActions() {
+        if(!isEmailSection) {
+            myFirebase.searchExistenceOfPhoneNumberFromFirebase(binding.editCenter.getText().toString(),requireContext());
+        }
+        else{
+            myFirebase.sendPasswordResetEmail(binding.editCenter.getText().toString(),requireContext());
+            Toast.makeText(requireContext(), "Link for reset password is sent to your email!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isValid() {
+        if(isEmailSection)
+            return CommonOperationHelper.isValidEmail(binding.editCenter.getText().toString());
+        else
+            return CommonOperationHelper.isValidPhoneNumber(binding.editCenter.getText().toString(),binding.countryCodePicker.getSelectedCountryCode()).isValid();
+
+    }
+
+
     private void sendPassword() {
-        if (isEmailSection && CommonOperationHelper.isValidEmail(binding.editCenter.getText().toString())) {
-            //todo send new password to email
+        if (isEmailSection) {
             myFirebase.sendPasswordResetEmail(binding.editCenter.getText().toString(), requireContext());
             Log.d(TAG, "releaseAccount: email is valid");
-        } else if (CommonOperationHelper.isValidPhoneNumber(binding.editCenter.getText().toString(), binding.countryCodePicker.getSelectedCountryCode()).isValid()) {
-            //TODO send new password to phone number
-
-            Log.d(TAG, "releaseAccount: phone number is valid");
         } else {
             if (isEmailSection)
-                Toast.makeText(getActivity(), "E-poçt ünvanı mövud deyil, yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "E-poçt ünvanı mövcud deyil, yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
             else
                 Toast.makeText(getActivity(), "Telefon nömrəsi düzgün deyil, yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
         }
@@ -121,6 +136,12 @@ public class ForgetPassword extends BaseFragment {
 
     @Subscribe
     public void onMoveToOtpEvent(MoveToOTPFromForgetPasswordEvent move){
-        NavHostFragment.findNavController(this).navigate(ForgetPasswordDirections.actionForgetPasswordToOTPFragment("MyPassword", binding.countryCodePicker.getSelectedCountryCode(), binding.editCenter.getText().toString()));
+        myFirebase.registerWithPhoneNumber(requireActivity(),binding.countryCodePicker.getSelectedCountryCode()+binding.editCenter.getText().toString());
+        myEdit.putString("phoneNumber", binding.countryCodePicker.getSelectedCountryCode() +binding.editCenter.getText().toString());
+        myEdit.putBoolean("fromRegister",false);
+        myEdit.apply();
+        Log.d(TAG, "onMoveToOtpEvent: my phone number: "+binding.editCenter.getText().toString());
+        Log.d(TAG, "onMoveToOtpEvent: that is also: "+sharedPreferences.getString("phoneNumber","nothing"));
+        NavHostFragment.findNavController(this).navigate(ForgetPasswordDirections.actionForgetPasswordToOTPFragment());
     }
 }
