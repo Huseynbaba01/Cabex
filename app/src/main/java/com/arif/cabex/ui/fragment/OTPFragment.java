@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.arif.cabex.databinding.FragmentOTPBinding;
-import com.arif.cabex.event.CodeSentEvent;
 import com.arif.cabex.event.EndRegistrationEvent;
 import com.arif.cabex.helper.GenericTextWatcher;
 import com.arif.cabex.network.MyFirebase;
@@ -42,10 +41,9 @@ public class OTPFragment extends BaseFragment {
 	                         Bundle savedInstanceState) {
 		binding = FragmentOTPBinding.inflate(inflater, container, false);
 		sharedPreferences = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
-		myEdit = sharedPreferences.edit();
 		phoneNumber = sharedPreferences.getString("phoneNumber","__");
-		fromRegister = sharedPreferences.getBoolean("fromRegister",true);
-
+		fromRegister = sharedPreferences.getBoolean("fromRegister",false);
+		verificationCode = sharedPreferences.getString("verificationCode","00000");
 
 		binding.confirmationHintNumber.setText("Kod +"+phoneNumber+"\n nömrəsinə göndərildi");
 		addTextChangedListeners();
@@ -75,7 +73,7 @@ public class OTPFragment extends BaseFragment {
 		binding.resend.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				myFirebase.registerWithPhoneNumber(getActivity(),phoneNumber,password);
+				myFirebase.registerWithPhoneNumber(getActivity(),phoneNumber);
 				resetBoxes();
 			}
 		});
@@ -168,6 +166,7 @@ public class OTPFragment extends BaseFragment {
 	public void onFinishRegistrationEvent(EndRegistrationEvent endRegistrationEvent){
 		Log.d(TAG, "onFinishRegistrationEvent: Verification is completed (event)");
 		if(fromRegister){
+			Log.d(TAG, "onFinishRegistrationEvent: "+fromRegister);
 			Intent intent = new Intent(getContext(), MainPagesActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 			startActivity(intent);
@@ -178,8 +177,4 @@ public class OTPFragment extends BaseFragment {
 	}
 
 
-	@Subscribe(threadMode = ThreadMode.ASYNC,sticky = true)
-	public void onCodeSent(CodeSentEvent codeSentEvent){
-		verificationCode = codeSentEvent.getVerificationCode();
-	}
 }
