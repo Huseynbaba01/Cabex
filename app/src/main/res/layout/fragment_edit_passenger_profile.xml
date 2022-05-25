@@ -255,6 +255,7 @@
                     android:fontFamily="@font/poppins_medium"
                     android:inputType="textPassword"
                     android:paddingTop="15dp"
+                    android:layout_marginBottom="20dp"
                     android:paddingBottom="15dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -266,6 +267,7 @@
         android:id="@+id/remember_changes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingVertical="15dp"
         android:layout_marginHorizontal="16dp"
         android:fontFamily="@font/poppins_medium"
         android:foregroundGravity="center"

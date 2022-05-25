@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.arif.cabex.databinding.FragmentEditPassengerProfileBinding
+import com.arif.cabex.network.MyFirebase
 import com.arif.cabex.ui.activity.MainActivity
 
 class EditProfileFragment: Fragment() {
@@ -19,6 +20,7 @@ class EditProfileFragment: Fragment() {
     ): View {
         binding = FragmentEditPassengerProfileBinding.inflate(inflater, container, false)
         binding.lblLeave.setOnClickListener {
+            MyFirebase.getDefault().logOut()
             startActivity(Intent(requireActivity(), MainActivity::class.java))
         }
         return binding.root

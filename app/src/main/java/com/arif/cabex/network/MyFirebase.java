@@ -41,8 +41,13 @@ public class MyFirebase {
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
     FirebaseDatabase firebaseDatabase;
+    private static MyFirebase defaultObject;
     private final String TAG = "MyTagHere";
 
+    public static MyFirebase getDefault(){
+        if(defaultObject == null) defaultObject = new MyFirebase();
+        return defaultObject;
+    }
 
     public void registerWithPhoneNumber(Activity activity, String phoneNumber){
         SharedPreferences sharedPreferences = activity.getSharedPreferences("MySharedPref",Context.MODE_PRIVATE);
