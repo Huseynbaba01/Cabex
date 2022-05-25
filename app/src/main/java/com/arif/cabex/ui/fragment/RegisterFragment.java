@@ -188,7 +188,11 @@ public class RegisterFragment extends BaseFragment {
 
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	public void onMoveToOTPEvent(MoveToOTPEvent moveToOTPEvent){
-		NavHostFragment.findNavController(this).navigate(RegisterFragmentDirections.actionRegisterFragmentToOTPFragment(binding.editPassword.getText().toString(),binding.countryCodePicker.getSelectedCountryCode(),binding.userName.getText().toString()));
+		myEdit.putString("phoneNumber",binding.countryCodePicker.getSelectedCountryCode()+binding.editPassword.getText().toString());
+		myEdit.putString("password",binding.editPassword.getText().toString());
+		myEdit.putBoolean("fromRegister",true);
+		myEdit.apply();
+		NavHostFragment.findNavController(this).navigate(RegisterFragmentDirections.actionRegisterFragmentToOTPFragment());
 	}
 
 	@Subscribe(threadMode = ThreadMode.MAIN,sticky = true)

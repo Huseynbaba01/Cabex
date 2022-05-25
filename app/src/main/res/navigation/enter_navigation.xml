@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/enter_navigation"
-    app:startDestination="@id/loginFragment"
+    app:startDestination="@id/resetPasswordFragment"
     >
 
     <fragment
@@ -16,12 +16,8 @@
             app:destination="@id/registerFragment"
             app:popUpTo="@id/registerFragment"
             app:popUpToInclusive="true" />
-        <argument
-            android:name="isEmailSection"
-            android:defaultValue="false"
-            app:argType="boolean"/>
         <action
-            android:id="@+id/action_loginFragment_to_forgetPassword2"
+            android:id="@+id/action_loginFragment_to_forgetPassword"
             app:destination="@id/forgetPassword" />
     </fragment>
     <fragment
@@ -47,18 +43,9 @@
         android:name="com.arif.cabex.ui.fragment.OTPFragment"
         android:label="fragment_o_t_p"
         tools:layout="@layout/fragment_o_t_p" >
-        <argument
-            android:name="password"
-            app:argType="string"
-            />
-        <argument
-            android:name="countryCode"
-            app:argType="string"
-            />
-        <argument
-            android:name="phoneNumber"
-            app:argType="string"
-            />
+        <action
+            android:id="@+id/action_OTPFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassword"
@@ -68,5 +55,12 @@
         <action
             android:id="@+id/action_forgetPassword_to_OTPFragment"
             app:destination="@id/OTPFragment" />
+        <action
+            android:id="@+id/action_forgetPassword_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.arif.cabex.ui.fragment.ResetPasswordFragment"
+        android:label="ResetPasswordFragment" />
 </navigation>

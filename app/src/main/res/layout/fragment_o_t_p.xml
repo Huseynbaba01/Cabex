@@ -30,10 +30,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/confirmation_hint"
-            android:gravity="center"
             android:layout_marginTop="10dp"
-            android:text="Kod +994553634895\n nömrəsinə göndərildi"
             android:fontFamily="@font/poppins_light"
+            android:gravity="center"
+            android:text="Kod +994553634895\n nömrəsinə göndərildi"
             android:textSize="15sp" />
 
         <LinearLayout

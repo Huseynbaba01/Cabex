@@ -45,9 +45,8 @@ public class MyFirebase {
     FirebaseDatabase firebaseDatabase;
     private final String TAG = "MyTagHere";
 
-    public void registerWithPhoneNumber(String countryCode, Activity activity, String basePhoneNumber, String password){
-        String phoneNumber = "+"+
-                countryCode+basePhoneNumber;
+    public void registerWithPhoneNumber(Activity activity, String phoneNumber, String password){
+        phoneNumber = "+"+phoneNumber;
         PhoneAuthProvider.verifyPhoneNumber(PhoneAuthOptions.newBuilder(auth)
                 .setPhoneNumber(phoneNumber)       // Phone number to verify
                 .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
@@ -223,5 +222,7 @@ public class MyFirebase {
                 })
                 .addOnFailureListener(e -> Log.d(TAG, "onFailureDuringSignINWithPhoneNumber: "+e.getMessage()));
     }
+
+
 
 }

@@ -16,7 +16,8 @@ class ResetPasswordFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        binding = FragmentResetPasswordBinding.inflate(inflater)
+        return binding.root
     }
 
 }

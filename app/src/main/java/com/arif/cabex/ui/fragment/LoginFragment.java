@@ -1,5 +1,7 @@
 package com.arif.cabex.ui.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -24,6 +26,8 @@ public class LoginFragment extends Fragment {
 	private FragmentLoginBinding binding;
 	private NavDirections direction;
 	private boolean isEmailSection;
+	private SharedPreferences sharedPreferences;
+	private SharedPreferences.Editor myEdit;
 	private MyFirebase myFirebase = new MyFirebase();
 
 	@Override
@@ -31,7 +35,9 @@ public class LoginFragment extends Fragment {
 	                         Bundle savedInstanceState) {
 		binding = FragmentLoginBinding.inflate(inflater, container, false);
 		direction = LoginFragmentDirections.actionLoginFragmentToRegisterFragment();
-		isEmailSection = LoginFragmentArgs.fromBundle(getArguments()).getIsEmailSection();
+		sharedPreferences = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+		myEdit = sharedPreferences.edit();
+		isEmailSection = sharedPreferences.getString("section","email").equals("email");
 
 		addHints();
 		setActions();
@@ -81,7 +87,7 @@ public class LoginFragment extends Fragment {
 	}
 
 	private void moveToForgetPasswordFragment(View view) {
-		NavHostFragment.findNavController(this).navigate(LoginFragmentDirections.actionLoginFragmentToForgetPassword2());
+		NavHostFragment.findNavController(this).navigate(LoginFragmentDirections.actionLoginFragmentToForgetPassword());
 	}
 
 	private void onRegistrationLinkClicked(View view) {

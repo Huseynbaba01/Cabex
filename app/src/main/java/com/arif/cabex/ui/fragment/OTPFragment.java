@@ -1,6 +1,8 @@
 package com.arif.cabex.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -10,12 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.navigation.fragment.NavHostFragment;
+
 import com.arif.cabex.databinding.FragmentOTPBinding;
 import com.arif.cabex.event.CodeSentEvent;
 import com.arif.cabex.event.EndRegistrationEvent;
 import com.arif.cabex.helper.GenericTextWatcher;
 import com.arif.cabex.network.MyFirebase;
-import com.arif.cabex.ui.fragment.OTPFragmentArgs;
 import com.arif.cabex.ui.activity.MainPagesActivity;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -28,20 +31,23 @@ public class OTPFragment extends BaseFragment {
 
 	private String verificationCode,phoneNumber,password,countryCode;
 	MyFirebase myFirebase = new MyFirebase();
+	private SharedPreferences sharedPreferences;
+	private SharedPreferences.Editor myEdit;
 	private String TAG = "MyTagHere";
-
+	private Boolean fromRegister;
 
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	                         Bundle savedInstanceState) {
 		binding = FragmentOTPBinding.inflate(inflater, container, false);
-		phoneNumber = OTPFragmentArgs.fromBundle(getArguments()).getPhoneNumber();
-		password = OTPFragmentArgs.fromBundle(getArguments()).getPassword();
-		countryCode = OTPFragmentArgs.fromBundle(getArguments()).getCountryCode();
-		phoneNumber = countryCode + phoneNumber;
+		sharedPreferences = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+		myEdit = sharedPreferences.edit();
+		phoneNumber = sharedPreferences.getString("phoneNumber","__");
+		fromRegister = sharedPreferences.getBoolean("fromRegister",true);
 
 
+		binding.confirmationHintNumber.setText("Kod +"+phoneNumber+"\n nömrəsinə göndərildi");
 		addTextChangedListeners();
 		setOnKeyListeners();
 		setClickListeners();
@@ -56,7 +62,8 @@ public class OTPFragment extends BaseFragment {
 			public void onClick(View view) {
 				String myVerificationCode = getVerificationCode();
 				if(myVerificationCode.length()!=6){
-					Toast.makeText(getActivity(), "Some boxes are empty, please fill all boxes and retry!", Toast.LENGTH_SHORT).show();
+					resetBoxes();
+					Toast.makeText(getActivity(), "Bütün xanaları doldurun!", Toast.LENGTH_SHORT).show();
 				}
 				else{
 					PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode,myVerificationCode);
@@ -68,7 +75,7 @@ public class OTPFragment extends BaseFragment {
 		binding.resend.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				myFirebase.registerWithPhoneNumber(OTPFragmentArgs.fromBundle(getArguments()).getCountryCode(),getActivity(),OTPFragmentArgs.fromBundle(getArguments()).getPhoneNumber(),OTPFragmentArgs.fromBundle(getArguments()).getPassword());
+				myFirebase.registerWithPhoneNumber(getActivity(),phoneNumber,password);
 				resetBoxes();
 			}
 		});
@@ -160,9 +167,14 @@ public class OTPFragment extends BaseFragment {
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	public void onFinishRegistrationEvent(EndRegistrationEvent endRegistrationEvent){
 		Log.d(TAG, "onFinishRegistrationEvent: Verification is completed (event)");
-		Intent intent = new Intent(getContext(), MainPagesActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-		startActivity(intent);
+		if(fromRegister){
+			Intent intent = new Intent(getContext(), MainPagesActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+			startActivity(intent);
+		}else{
+			NavHostFragment.findNavController(this).navigate(OTPFragmentDirections.actionOTPFragmentToResetPasswordFragment());
+		}
+
 	}
 
 

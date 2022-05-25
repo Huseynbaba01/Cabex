@@ -8,9 +8,14 @@
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/drawable/ic_baseline_phone_android_24.xml" value="0.2703125" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/drawable/ic_email.xml" value="0.2703125" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_driver_info.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_driver_profile.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_forget_password.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_login.xml" value="0.24818840579710144" />
-        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_o_t_p.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_main.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_o_t_p.xml" value="0.264" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_reset_password.xml" value="0.2" />
         <entry key="..\:/Users/hrzaq/AndroidStudioProjects/Cabex/app/src/main/res/layout/activity_main.xml" value="0.1" />
       </map>
     </option>
