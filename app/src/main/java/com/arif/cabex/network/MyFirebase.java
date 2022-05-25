@@ -227,4 +227,7 @@ public class MyFirebase {
 
 
 
+    public void logOut(){
+        auth.signOut();
+    }
 }

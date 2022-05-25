@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="20dp"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.SelectUserTypeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/feriha">
+
+        <ImageView
+            android:layout_width="171dp"
+            android:layout_height="67dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/ic_cabex_logo_yellow_bck" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="23dp"
+
+            android:layout_marginEnd="23dp"
+            android:elevation="10dp"
+            android:scaleType="fitCenter"
+            android:translationY="105dp"
+            android:translationZ="20dp"
+            app:srcCompat="@drawable/passenger_in_app" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_above="@+id/buttons_layout"
+        android:layout_marginBottom="15dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Tək səyahət etməyə son vermək istəyənlər, doğru ünvandasınız"
+        />
+
+    <LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/driver"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Sürücü"
+            android:textAllCaps="false"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="10dp"
+            app:cornerRadius="8dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/passenger"
+            android:layout_width="0dp"
+            android:text="Sərnişin"
+            android:textColor="@color/black"
+            android:layout_marginEnd="16dp"
+            android:paddingVertical="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
+            android:layout_weight="0.5"
+            android:backgroundTint="@color/secondary_main_color"
+            android:layout_height="wrap_content"
+            app:cornerRadius="8dp"
+            />
+    </LinearLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

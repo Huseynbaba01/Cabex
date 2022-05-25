@@ -63,4 +63,34 @@
         android:id="@+id/resetPasswordFragment"
         android:name="com.arif.cabex.ui.fragment.ResetPasswordFragment"
         android:label="ResetPasswordFragment" />
+    <fragment
+        android:id="@+id/selectUserTypeFragment"
+        android:name="com.arif.cabex.ui.fragment.SelectUserTypeFragment"
+        android:label="fragment_select_user_type"
+        tools:layout="@layout/fragment_select_user_type" >
+        <action
+            android:id="@+id/action_selectUserTypeFragment_to_selectSigningTypeFragment"
+            app:destination="@id/selectSigningTypeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectSigningTypeFragment"
+        android:name="com.arif.cabex.ui.fragment.SelectSigningTypeFragment"
+        android:label="fragment_select_signing_type"
+        tools:layout="@layout/fragment_select_signing_type" >
+        <action
+            android:id="@+id/action_selectSigningTypeFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_selectSigningTypeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.arif.cabex.ui.fragment.IntroFragment"
+        android:label="fragment_intro"
+        tools:layout="@layout/fragment_intro" >
+        <action
+            android:id="@+id/action_introFragment_to_selectUserTypeFragment"
+            app:destination="@id/selectUserTypeFragment" />
+    </fragment>
 </navigation>

@@ -15,12 +15,12 @@ class DriverInfoAdapter(var listOfDriverInfo: ArrayList<DriverInfo>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DriverInfoViewHolder {
         val binding = MainPageListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return DriverInfoViewHolder(binding);
+        return DriverInfoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: DriverInfoViewHolder, position: Int) {
         holder.profilePicture.setBackgroundResource(listOfDriverInfo[position].profilePicture!!)
-        holder.route.setText(listOfDriverInfo[position].driverRoute)
+        holder.route.text = listOfDriverInfo[position].driverRoute
         holder.recyclerViewLine1.setOnClickListener {
             if (listOfDriverInfo[position].isOpened) {
                 listOfDriverInfo[position].isOpened = false

@@ -11,7 +11,17 @@
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_login.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_o_t_p.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Arif/Cabex/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/drawable/feriha.xml" value="0.24" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/drawable/ic_passenger_info_in_mobile.xml" value="0.241" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/drawable/ic_passenger_info_in_mobile__2_.xml" value="0.241" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/layout/activity_main.xml" value="0.19281744335185977" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/layout/fragment_intro.xml" value="0.19281744335185977" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/layout/fragment_main.xml" value="0.33" />
         <entry key="..\:/Users/arifm/Cabex/app/src/main/res/layout/fragment_register.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/layout/fragment_select_signing_type.xml" value="0.22" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/layout/fragment_select_user_type.xml" value="0.18" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/layout/fragment_settings.xml" value="0.19281744335185977" />
+        <entry key="..\:/Users/arifm/Cabex/app/src/main/res/layout/main_page_list_item.xml" value="0.5" />
       </map>
     </option>
   </component>
