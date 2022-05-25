@@ -25,7 +25,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationsFragment extends BaseFragment {
+public class NotificationsFragment extends Fragment {
 	private FragmentNotificationsBinding binding;
 	private List<NotificationItem> notificationItems;
 	private NotificationsAdapter adapter;
