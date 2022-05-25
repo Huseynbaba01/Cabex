@@ -1,6 +1,7 @@
 package com.arif.cabex.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -18,11 +19,15 @@ import android.widget.Toast;
 
 import com.arif.cabex.R;
 import com.arif.cabex.databinding.FragmentLoginBinding;
+import com.arif.cabex.event.SignInCompletedEvent;
 import com.arif.cabex.network.MyFirebase;
+import com.arif.cabex.ui.activity.MainPagesActivity;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.jetbrains.annotations.NotNull;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends BaseFragment {
 	private FragmentLoginBinding binding;
 	private NavDirections direction;
 	private boolean isEmailSection;
@@ -64,7 +69,6 @@ public class LoginFragment extends Fragment {
 		binding.layoutPassword.setPasswordVisibilityToggleEnabled(true);
 		binding.registrationLink.setOnClickListener(this::onRegistrationLinkClicked);
 		binding.signIn.setOnClickListener(this::onSignInButtonClicked);
-		binding.googleButton.setOnClickListener(this::onGoogleButtonClicked);
 
 		binding.forgetPassword.setOnClickListener(this::moveToForgetPasswordFragment);
 
@@ -115,10 +119,13 @@ public class LoginFragment extends Fragment {
 			myFirebase.signInWithEmail(binding.userName.getText().toString(),binding.inputPassword.getText().toString());
 	}
 
-	private void onGoogleButtonClicked(View view) {
-		NavHostFragment.findNavController(this).navigate(direction);
-	}
 
+
+	@Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+	public void onSignInCompleted(SignInCompletedEvent sign){
+		Intent intent = new Intent(requireContext(), MainPagesActivity.class);
+		startActivity(intent);
+	}
 
 
 }

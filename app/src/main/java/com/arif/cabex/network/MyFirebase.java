@@ -13,6 +13,7 @@ import com.arif.cabex.event.ClearEditBoxesEvent;
 import com.arif.cabex.event.EndRegistrationEvent;
 import com.arif.cabex.event.MoveToOTPFromForgetPasswordEvent;
 import com.arif.cabex.event.ResendPasswordWithEmailEvent;
+import com.arif.cabex.event.SignInCompletedEvent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -163,7 +164,7 @@ public class MyFirebase {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        //TODO Confirm the sign in and you will be able to move to another page
+                        EventBus.getDefault().postSticky(new SignInCompletedEvent());
                         Log.d(TAG, "onComplete: you perfectly signed in!");
                     }
                 });
@@ -177,6 +178,7 @@ public class MyFirebase {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(!task.getResult().isEmpty()){
                             //TODO sign in with phone number completed
+                            EventBus.getDefault().postSticky(new SignInCompletedEvent());
                             Log.d(TAG, "onComplete: Sign in is completed!");
                         }else
                             Toast.makeText(mContext,"Your data is not exists!",Toast.LENGTH_LONG).show();
