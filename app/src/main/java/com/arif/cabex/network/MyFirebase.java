@@ -3,6 +3,7 @@ package com.arif.cabex.network;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.media.midi.MidiDevice;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import com.arif.cabex.database.NewOfferDatabase;
 import com.arif.cabex.event.ClearEditBoxesEvent;
 import com.arif.cabex.event.EndRegistrationEvent;
 import com.arif.cabex.event.MoveToOTPFromForgetPasswordEvent;
+import com.arif.cabex.event.MoveToResetPasswordEvent;
 import com.arif.cabex.event.ResendPasswordWithEmailEvent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -42,6 +44,7 @@ public class MyFirebase {
     FirebaseFirestore fireStore = FirebaseFirestore.getInstance();
     FirebaseDatabase firebaseDatabase;
     private final String TAG = "MyTagHere";
+
 
 
     public void registerWithPhoneNumber(Activity activity, String phoneNumber){
@@ -97,12 +100,19 @@ public class MyFirebase {
     }
 
 
-    public void verifyWithCredential(PhoneAuthCredential credential,String phoneNumber,String password){
+    public void verifyWithCredential(PhoneAuthCredential credential,String phoneNumber,String password,Context mContext){
         auth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                addPhoneNumberAndPasswordToGlobalDatabase(phoneNumber,password);
-                EventBus.getDefault().postSticky(new EndRegistrationEvent());
+                //todo differentiate the pages
+                SharedPreferences sharedPreferences = mContext.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+                Boolean fromRegister = sharedPreferences.getBoolean("fromRegister",false);
+                if(fromRegister){
+                    addPhoneNumberAndPasswordToGlobalDatabase(phoneNumber,password);
+                    EventBus.getDefault().postSticky(new EndRegistrationEvent());
+                }else{
+                    EventBus.getDefault().postSticky(new MoveToResetPasswordEvent());
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -116,11 +126,12 @@ public class MyFirebase {
         HashMap<String,String> user = new HashMap<>();
         user.put("phoneNumber",phoneNumber);
         user.put("password",password);
+        Log.d(TAG, "addPhoneNumberAndPasswordToGlobalDatabase: phoneNumber:"+phoneNumber+",password:"+password);
         fireStore.collection("UsersWithPhoneNumber")
                 .add(user).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
-                        Log.d(TAG, "onComplete: addingTo Email is completed!");
+                        Log.d(TAG, "onComplete: adding To Firebase is completed!");
                     }
                 });
 
@@ -216,10 +227,11 @@ public class MyFirebase {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(!task.getResult().isEmpty()){
+                            Log.d(TAG, "onComplete: We are here...");
                             registerWithPhoneNumber((Activity) mContext,phoneNumber);
                             EventBus.getDefault().postSticky(new MoveToOTPFromForgetPasswordEvent());
                         }else
-                            Toast.makeText(mContext,"Telefon nömrəniz düzgün deyil!",Toast.LENGTH_LONG).show();
+                            Toast.makeText(mContext,"CabEx-də qeydiyyatda olan telefon nömrəsi deyil!",Toast.LENGTH_LONG).show();
                     }
                 })
                 .addOnFailureListener(e -> Log.d(TAG, "onFailureDuringSignInWithPhoneNumber: "+e.getMessage()));

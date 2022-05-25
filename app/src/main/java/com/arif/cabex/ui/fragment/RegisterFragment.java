@@ -180,7 +180,8 @@ public class RegisterFragment extends BaseFragment {
 
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	public void onMoveToOTPEvent(MoveToOTPEvent moveToOTPEvent){
-		myEdit.putString("phoneNumber",binding.countryCodePicker.getSelectedCountryCode()+binding.editPassword.getText().toString());
+		Log.d(TAG, "onMoveToOTPEvent: "+binding.userName.getText().toString());
+		myEdit.putString("phoneNumber",binding.countryCodePicker.getSelectedCountryCode()+binding.userName.getText().toString());
 		myEdit.putString("password",binding.editPassword.getText().toString());
 		myEdit.putBoolean("fromRegister",true);
 		myEdit.apply();

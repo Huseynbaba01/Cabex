@@ -16,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.arif.cabex.databinding.FragmentOTPBinding;
 import com.arif.cabex.event.EndRegistrationEvent;
+import com.arif.cabex.event.MoveToResetPasswordEvent;
 import com.arif.cabex.helper.GenericTextWatcher;
 import com.arif.cabex.network.MyFirebase;
 import com.arif.cabex.ui.activity.MainPagesActivity;
@@ -42,9 +43,12 @@ public class OTPFragment extends BaseFragment {
 		binding = FragmentOTPBinding.inflate(inflater, container, false);
 		sharedPreferences = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
 		phoneNumber = sharedPreferences.getString("phoneNumber","__");
+		password = sharedPreferences.getString("password","123456");
+		Log.d(TAG, "onCreateView: "+phoneNumber);
 		fromRegister = sharedPreferences.getBoolean("fromRegister",false);
 		verificationCode = sharedPreferences.getString("verificationCode","00000");
 
+		Log.d(TAG, "onCreateView: "+phoneNumber);
 		binding.confirmationHintNumber.setText("Kod +"+phoneNumber+"\n nömrəsinə göndərildi");
 		addTextChangedListeners();
 		setOnKeyListeners();
@@ -65,7 +69,7 @@ public class OTPFragment extends BaseFragment {
 				}
 				else{
 					PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode,myVerificationCode);
-					myFirebase.verifyWithCredential(credential,countryCode+phoneNumber,password);
+					myFirebase.verifyWithCredential(credential,phoneNumber,password,requireContext());
 				}
 			}
 		});
@@ -174,6 +178,11 @@ public class OTPFragment extends BaseFragment {
 			NavHostFragment.findNavController(this).navigate(OTPFragmentDirections.actionOTPFragmentToResetPasswordFragment());
 		}
 
+	}
+
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	public void onMoveToResetPageEvent(MoveToResetPasswordEvent move){
+		NavHostFragment.findNavController(this).navigate(OTPFragmentDirections.actionOTPFragmentToResetPasswordFragment());
 	}
 
 
