@@ -210,12 +210,13 @@ public class MyFirebase {
     }
 
 
-    public void searchExistenceOfPhoneNumber(String phoneNumber, Context mContext){
+    public void searchExistenceOfPhoneNumberFromFirebase(String phoneNumber, Context mContext){
         fireStore.collection("UsersWithPhoneNumber").whereEqualTo("phoneNumber",phoneNumber).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(!task.getResult().isEmpty()){
+                            registerWithPhoneNumber((Activity) mContext,phoneNumber);
                             EventBus.getDefault().postSticky(new MoveToOTPFromForgetPasswordEvent());
                         }else
                             Toast.makeText(mContext,"Telefon nömrəniz düzgün deyil!",Toast.LENGTH_LONG).show();

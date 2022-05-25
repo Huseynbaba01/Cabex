@@ -133,8 +133,6 @@ public class RegisterFragment extends BaseFragment {
 			binding.countryCodePicker.setVisibility(View.GONE);
 			myEdit.putString("section","email");
 			myEdit.apply();
-
-
 		}
 	}
 

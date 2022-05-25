@@ -81,33 +81,37 @@ public class ForgetPassword extends BaseFragment {
     private void releaseAccount(View view) {
         if(binding.editCenter.getText().toString().equals("")){
             if(isEmailSection)
-            Toast.makeText(getActivity(), "E-poçt ünvanı boş ola bilməz, yazıb yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "E-poçt ünvanı boş ola bilməz, yazıb yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
             else
                 Toast.makeText(getActivity(), "Telefon nömrəsi boş ola bilməz, yazıb yenidən yoxlayın!", Toast.LENGTH_SHORT).show();
 
             return;
         }else{
-            if (!isValid()) {
+            if (isValid()) {
                 Toast.makeText(requireContext(), "Yazdığınız dəyər düzgün deyil!", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(!isEmailSection) {
-                myFirebase.searchExistenceOfPhoneNumber(binding.editCenter.getText().toString(),requireContext());
-            }
-            else{
-                myFirebase.sendPasswordResetEmail(binding.editCenter.getText().toString(),requireContext());
-                Toast.makeText(requireContext(), "Link for reset password is sent to your email!", Toast.LENGTH_SHORT).show();
-            }
+            doActions();
         }
 
         sendPassword();
         }
 
+    private void doActions() {
+        if(!isEmailSection) {
+            myFirebase.searchExistenceOfPhoneNumberFromFirebase(binding.editCenter.getText().toString(),requireContext());
+        }
+        else{
+            myFirebase.sendPasswordResetEmail(binding.editCenter.getText().toString(),requireContext());
+            Toast.makeText(requireContext(), "Link for reset password is sent to your email!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private boolean isValid() {
         if(isEmailSection)
             return CommonOperationHelper.isValidEmail(binding.editCenter.getText().toString());
         else
-            return CommonOperationHelper.isValidPhoneNumber(binding.editCenter.getText().toString(),"+"+binding.countryCodePicker.getSelectedCountryCode()).isValid();
+            return CommonOperationHelper.isValidPhoneNumber(binding.editCenter.getText().toString(),binding.countryCodePicker.getSelectedCountryCode()).isValid();
 
     }
 
