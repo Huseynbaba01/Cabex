@@ -1,9 +1,12 @@
 package com.arif.cabex.ui.activity
 
+import android.content.Intent
 import androidx.navigation.Navigation.findNavController
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import android.os.Bundle
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.navigation.NavController
@@ -11,8 +14,12 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.arif.cabex.R
 import com.arif.cabex.databinding.ActivityMainPagesBinding
+import com.arif.cabex.event.ChangeNavbarVisibilityEvent
 import com.arif.cabex.ui.dialog.ConfirmOrderDialog
+import com.arif.cabex.ui.fragment.NewOffer
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 
 class MainPagesActivity : AppCompatActivity() {
     private val TAG = "MainPagesActivity"
@@ -36,14 +43,32 @@ class MainPagesActivity : AppCompatActivity() {
             )
         )
         binding.fab.setOnClickListener {
-            val dialog = ConfirmOrderDialog(this@MainPagesActivity)
-            dialog.show()
-            dialog.window?.setLayout(MATCH_PARENT, WRAP_CONTENT)
-
+            startActivity(Intent(this, NewOffer::class.java))
         }
     }
 
     override fun onNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
+
+    @Subscribe
+    fun onChangeNavbarVisibilityEvent(event: ChangeNavbarVisibilityEvent){
+        if(event.visible){
+            binding.bottomAppBar.visibility = VISIBLE
+            binding.fab.visibility = VISIBLE
+        }
+        else {
+            binding.bottomAppBar.visibility = GONE
+            binding.fab.visibility = GONE
+        }
     }
 }

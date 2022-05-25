@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arif.cabex.model.DriverInfo
 import com.arif.cabex.databinding.MainPageListItemBinding
+import com.arif.cabex.event.MoreInfoEvent
 import com.arif.cabex.ui.holder.DriverInfoViewHolder
+import org.greenrobot.eventbus.EventBus
 
 class DriverInfoAdapter(var listOfDriverInfo: ArrayList<DriverInfo>) :
     RecyclerView.Adapter<DriverInfoViewHolder>() {
@@ -45,6 +47,9 @@ class DriverInfoAdapter(var listOfDriverInfo: ArrayList<DriverInfo>) :
         }
 
         holder.seats.text = item.seats
+        holder.moreInfo.setOnClickListener {
+            EventBus.getDefault().post(MoreInfoEvent(position))
+        }
     }
 
     override fun getItemCount(): Int {

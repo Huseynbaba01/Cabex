@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.arif.cabex.databinding.FragmentEditPassengerProfileBinding
+import com.arif.cabex.event.ChangeNavbarVisibilityEvent
 import com.arif.cabex.network.MyFirebase
 import com.arif.cabex.ui.activity.MainActivity
+import org.greenrobot.eventbus.EventBus
 
 class EditProfileFragment: Fragment() {
     private lateinit var binding: FragmentEditPassengerProfileBinding
@@ -18,8 +20,10 @@ class EditProfileFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        EventBus.getDefault().post(ChangeNavbarVisibilityEvent(true))
         binding = FragmentEditPassengerProfileBinding.inflate(inflater, container, false)
         binding.lblLeave.setOnClickListener {
+
             MyFirebase.getDefault().logOut()
             startActivity(Intent(requireActivity(), MainActivity::class.java))
         }

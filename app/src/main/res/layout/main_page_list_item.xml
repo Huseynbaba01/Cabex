@@ -152,7 +152,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/dahaEtrafli"
+                    android:id="@+id/more_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

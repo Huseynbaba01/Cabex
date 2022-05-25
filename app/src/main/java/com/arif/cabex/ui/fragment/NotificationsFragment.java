@@ -15,14 +15,17 @@ import android.widget.ImageView;
 
 import com.arif.cabex.R;
 import com.arif.cabex.databinding.FragmentNotificationsBinding;
+import com.arif.cabex.event.ChangeNavbarVisibilityEvent;
 import com.arif.cabex.helper.type.NotificationType;
 import com.arif.cabex.model.NotificationItem;
 import com.arif.cabex.ui.adapter.NotificationsAdapter;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificationsFragment extends Fragment {
+public class NotificationsFragment extends BaseFragment {
 	private FragmentNotificationsBinding binding;
 	private List<NotificationItem> notificationItems;
 	private NotificationsAdapter adapter;
@@ -31,6 +34,8 @@ public class NotificationsFragment extends Fragment {
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
+		EventBus.getDefault().post(new ChangeNavbarVisibilityEvent(true));
+
 		binding = FragmentNotificationsBinding.inflate(inflater, container, false);
 		notificationItems = new ArrayList<>();
 		notificationItems.add(new NotificationItem(false,
@@ -50,7 +55,6 @@ public class NotificationsFragment extends Fragment {
 		binding.notificationItems.setLayoutManager(new LinearLayoutManager(getContext()));
 		adapter.setItems(notificationItems);
 		binding.btnRead.setOnClickListener(view1 -> {
-
 		});
 
 	}

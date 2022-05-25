@@ -40,12 +40,13 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/buttons"
+        android:layout_alignParentBottom="true"
         android:layout_below="@+id/cvProfilePicture"
         android:layout_marginTop="18dp"
         android:layout_marginBottom="10dp">
 
         <RelativeLayout
+            android:id="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -230,52 +231,56 @@
                 android:theme="@style/RatingBar"
 
                 />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttons"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="70dp"
+                android:layout_below="@id/ratingBar"
+                android:orientation="horizontal">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/order"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#F1D856"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="text"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Sifariş et"
+                    android:textSize="18sp"
+                    app:cornerRadius="8dp"
+                    android:textColor="@color/black_text_color" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/call"
+                    app:icon="@drawable/phone"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#86D978"
+                    android:fontFamily="@font/poppins_medium"
+                    android:inputType="textCapSentences"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="Zəng et"
+                    android:textSize="18sp"
+                    app:cornerRadius="8dp"
+                    android:textColor="@color/black_text_color" />
+            </LinearLayout>
 
         </RelativeLayout>
+
+
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/buttons"
-        android:orientation="horizontal">
-
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/order"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="#F1D856"
-            android:fontFamily="@font/poppins_medium"
-            android:inputType="text"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="Sifariş et"
-            android:textSize="18sp"
-            app:cornerRadius="8dp"
-            android:textColor="@color/black_text_color" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/call"
-            app:icon="@drawable/phone"
-            app:iconGravity="textStart"
-            app:iconTint="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="#86D978"
-            android:fontFamily="@font/poppins_medium"
-            android:inputType="textCapSentences"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:text="Zəng et"
-            android:textSize="18sp"
-            app:cornerRadius="8dp"
-            android:textColor="@color/black_text_color" />
-    </LinearLayout>
 
 </RelativeLayout>

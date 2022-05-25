@@ -1,8 +1,11 @@
 package com.arif.cabex.ui.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +16,11 @@ import com.arif.cabex.database.NewOfferDatabase;
 import com.arif.cabex.databinding.FragmentNewOfferBinding;
 import com.arif.cabex.network.MyFirebase;
 
-public class NewOffer extends Fragment {
+public class NewOffer extends Activity {
     private FragmentNewOfferBinding binding;
     MyFirebase myFirebase;
 
-    @Override
+/*    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentNewOfferBinding.inflate(inflater);
@@ -26,6 +29,16 @@ public class NewOffer extends Fragment {
         setClickListeners();
 
         return binding.getRoot();
+    }*/
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        binding = FragmentNewOfferBinding.bind(View.inflate(getBaseContext(), R.layout.fragment_new_offer, null));
+        setContentView(binding.getRoot());
+        myFirebase = new MyFirebase();
+
+        setClickListeners();
+        super.onCreate(savedInstanceState);
     }
 
     private void setClickListeners() {

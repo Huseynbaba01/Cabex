@@ -9,7 +9,15 @@
         android:id="@+id/main"
         android:name="com.arif.cabex.ui.fragment.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+
+        <action
+            android:id="@+id/action_main_to_driverMoreInfoFragment"
+            app:destination="@id/driverMoreInfoFragment" />
+        <action
+            android:id="@+id/action_main_to_chooseOnMapFragment"
+            app:destination="@id/chooseOnMapFragment" />
+    </fragment>
     <fragment
         android:id="@+id/map"
         android:name="com.arif.cabex.ui.fragment.PMapFragment"
@@ -26,4 +34,18 @@
         android:name="com.arif.cabex.ui.fragment.EditProfileFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_edit_passenger_profile" />
+    <fragment
+        android:id="@+id/driverMoreInfoFragment"
+        android:name="com.arif.cabex.ui.fragment.DriverMoreInfoFragment"
+        android:label="fragment_driver_info"
+        tools:layout="@layout/fragment_driver_info" >
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseOnMapFragment"
+        android:name="com.arif.cabex.ui.fragment.ChooseOnMapFragment"
+        android:label="fragment_choose_on_map"
+        tools:layout="@layout/fragment_choose_on_map" />
 </navigation>

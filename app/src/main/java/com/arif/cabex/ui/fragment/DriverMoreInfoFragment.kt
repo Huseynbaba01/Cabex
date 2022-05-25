@@ -9,22 +9,29 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.arif.cabex.databinding.FragmentDriverInfoBinding
+import com.arif.cabex.event.ChangeNavbarVisibilityEvent
+import com.arif.cabex.model.DriverInfo
 import com.arif.cabex.ui.dialog.ConfirmOrderDialog
+import org.greenrobot.eventbus.EventBus
 
 
 class DriverMoreInfoFragment : Fragment() {
    private lateinit var binding: FragmentDriverInfoBinding
-
+   private val args by navArgs<DriverMoreInfoFragmentArgs>()
+    private lateinit var user: DriverInfo
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDriverInfoBinding.inflate(inflater,container,false)
+        EventBus.getDefault().post(ChangeNavbarVisibilityEvent(false))
 
+        binding = FragmentDriverInfoBinding.inflate(inflater,container,false)
+        user = MainFragment.listOfDriversInfo[args.position]
         binding.call.setOnClickListener{
-            callingSomeone()
+//            callingSomeone()
         }
         binding.contactNumber.setOnClickListener{
             openWhatsapp("+994503432260")
@@ -34,6 +41,21 @@ class DriverMoreInfoFragment : Fragment() {
             dialog.show()
             dialog.window?.setLayout(MATCH_PARENT, WRAP_CONTENT)
         }
+        binding.driverName.text = user.driverFullName
+        binding.imageView.setBackgroundResource(user.profilePicture!!)
+        binding.departureTime.text = user.departureTime
+        binding.carBrand.text = user.carBrand
+        binding.emptySeats.text = user.seats
+        if(user.carPlate == null)
+            binding.carPlate.text = "hidden"
+        else binding.carPlate.text = user.carPlate
+        if(user.contactNumber == null)
+            binding.contactNumber.text = "hidden"
+        else binding.contactNumber.text = user.contactNumber
+        if(user.carColor == null)
+            binding.carColor.text = "hidden"
+        else binding.carColor.text = user.carColor
+
         return binding.root
     }
 

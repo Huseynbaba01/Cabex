@@ -17,6 +17,7 @@ class DriverInfoViewHolder(binding: MainPageListItemBinding) : RecyclerView.View
     var departure : TextView = binding.tvDeparture
     var carBrand : TextView = binding.carBrand
     var seats : TextView = binding.seats
+    var moreInfo : TextView = binding.moreInfo
 
 
 }
